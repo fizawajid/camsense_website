@@ -22,7 +22,7 @@ const AISecurityWebsite = () => {
   const [clickedElement, setClickedElement] = useState(null)
   const [visibleElements, setVisibleElements] = useState(new Set())
 
-  // Refs for intersection observer
+
   const observerRef = useRef(null)
   const elementsRef = useRef(new Map())
 
@@ -47,7 +47,7 @@ const AISecurityWebsite = () => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  // Auto-cycle through modules
+
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveModule((prev) => (prev + 1) % 4)
@@ -55,7 +55,7 @@ const AISecurityWebsite = () => {
     return () => clearInterval(interval)
   }, [])
 
-  // Handle scroll for active section
+  //scroll for active section
   useEffect(() => {
     const handleScroll = () => {
       const sections = ["home", "modules", "achievements", "goals", "team", "location", "contact"]
@@ -76,7 +76,7 @@ const AISecurityWebsite = () => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  // Intersection Observer for flying animations
+  //Intersection Observer for flying animations
   useEffect(() => {
     observerRef.current = new IntersectionObserver(
       (entries) => {
@@ -95,7 +95,7 @@ const AISecurityWebsite = () => {
       },
     )
 
-    // Observe all elements with data-animate-id
+    //all elements with data-animate-id
     const elements = document.querySelectorAll("[data-animate-id]")
     elements.forEach((el) => observerRef.current.observe(el))
 
@@ -114,7 +114,7 @@ const AISecurityWebsite = () => {
     setIsMenuOpen(false)
   }
 
-  // Flying animation handler
+  //Flying animation handler
   const handleFlyingClick = (elementId) => {
     setClickedElement(elementId)
     setTimeout(() => setClickedElement(null), 600)
@@ -132,37 +132,37 @@ const AISecurityWebsite = () => {
 
 const modules = [
   {
-    icon: <ParkingSquare className="w-8 h-8" />, // choose a parking-related icon
+    icon: <ParkingSquare className="w-8 h-8" />, 
     title: "Parking Lots Safety",
     description: "Monitor and secure parking areas with intelligent surveillance",
     color: "from-indigo-400 to-purple-400",
   },
   {
-    icon: <ShoppingCart className="w-8 h-8" />, // shoplifting
+    icon: <ShoppingCart className="w-8 h-8" />, 
     title: "Shoplifting Prevention",
     description: "Detect and prevent theft in retail environments in real-time",
     color: "from-pink-400 to-red-400",
   },
   {
-    icon: <Briefcase className="w-8 h-8" />, // office
+    icon: <Briefcase className="w-8 h-8" />,
     title: "Office Safety",
     description: "Ensure workplace safety and compliance effortlessly",
     color: "from-blue-400 to-cyan-400",
   },
   {
-    icon: <GraduationCap className="w-8 h-8" />, // university
+    icon: <GraduationCap className="w-8 h-8" />,
     title: "University Safety",
     description: "Protect campuses with proactive monitoring and alerts",
     color: "from-green-400 to-emerald-400",
   },
   {
-    icon: <BarChart3 className="w-8 h-8" />, // productivity
+    icon: <BarChart3 className="w-8 h-8" />, 
     title: "Employee Productivity",
     description: "Gain insights into workforce productivity and trends",
     color: "from-yellow-400 to-amber-400",
   },
   {
-    icon: <Home className="w-8 h-8" />, // home
+    icon: <Home className="w-8 h-8" />, 
     title: "Home Safety",
     description: "Keep your home safe with smart, AI-powered monitoring",
     color: "from-purple-400 to-pink-400",
@@ -217,18 +217,6 @@ const modules = [
       <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-700/50 shadow-lg">
         <div className="px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            {/* <div
-              className={`flex items-center gap-2 cursor-pointer transition-all duration-300 ${
-                clickedElement === "logo" ? "animate-flyTowards" : "hover:scale-110"
-              }`}
-              onClick={() => handleFlyingClick("logo")}
-            >
-              <span className="text-xl font-bold bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
-                Camsense
-              </span>
-            </div> */}
-            {/* Logo */}
 <div
   className={`flex items-center gap-2 cursor-pointer transition-all duration-300 ${
     clickedElement === "logo" ? "animate-flyTowards" : "hover:scale-110"
@@ -297,7 +285,7 @@ const modules = [
         </div>
       </nav>
 
-      {/* Hero Section with Video Background */}
+      {/*Video Background */}
       <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden pt-16">
         <div className="absolute inset-0 z-0">
           <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-40">
@@ -387,7 +375,6 @@ const modules = [
 
       {/* Product Overview */}
       <section id="product-overview" className="py-20 px-8 bg-gradient-to-b from-slate-800 to-slate-700 relative overflow-hidden">
-        {/* Animated Background */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="scanning-grid"></div>
           <div className="floating-dots"></div>
@@ -453,6 +440,8 @@ const modules = [
                 </div>
               ))}
             </div>
+
+
             {/* NEW LIVE DETECTION FEED */}
             <div
               className={`relative ${
@@ -520,10 +509,6 @@ const modules = [
             <h2 className="text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-200 to-blue-300 bg-clip-text text-transparent drop-shadow-2xl">
               Our Modules
             </h2>
-            {/* <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Comprehensive security solutions powered by cutting-edge AI technology
-            </p> */}
-            
             <div className="mt-8 flex justify-center">
               <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full animate-pulse"></div>
             </div>
@@ -630,7 +615,6 @@ const modules = [
 
             {/* achievements */}
 <section id="achievements" className="py-20 px-4 min-h-[50vh] bg-gradient-to-b from-slate-600 to-slate-700 relative overflow-hidden">
-  {/* Animated Background */}
   <div className="absolute inset-0 pointer-events-none">
     <div className="data-stream"></div>
     <div className="security-grid"></div>
@@ -685,7 +669,6 @@ const modules = [
 
     {/* goals */}
 <section id="goals" className="py-20 px-4 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
-  {/* Floating Orbs Background */}
   <div className="absolute inset-0 pointer-events-none">
     <div className="absolute top-10 left-10 w-32 h-32 bg-cyan-500/10 rounded-full blur-xl animate-pulse"></div>
     <div className="absolute top-32 right-20 w-48 h-48 bg-purple-500/10 rounded-full blur-xl animate-pulse" style={{animationDelay: '1s'}}></div>
@@ -710,7 +693,6 @@ const modules = [
 
     {/* Hexagonal Grid Layout */}
     <div className="relative">
-      {/* Central Hub */}
       <div className="flex justify-center mb-12">
         <div className="relative">
           <div className="w-32 h-32 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-full flex items-center justify-center shadow-2xl shadow-cyan-500/30">
@@ -747,21 +729,21 @@ const modules = [
               style={{ animationDelay: `${index * 0.3}s` }}
               onClick={() => handleFlyingClick(`goal-${index}`)}
             >
-              {/* Connecting Lines */}
+              {/* Lines */}
               <div className="absolute top-0 left-1/2 w-0.5 h-8 bg-gradient-to-b from-cyan-400/50 to-transparent transform -translate-x-1/2 -translate-y-8"></div>
               
               {/* Goal Card */}
               <div className="group cursor-pointer">
                 <div className="relative bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-lg border border-slate-600/50 rounded-2xl p-8 shadow-2xl hover:shadow-cyan-500/20 transition-all duration-500 hover:scale-105 hover:rotate-1">
-                  {/* Goal Number Badge */}
+                 
                   <div className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
                     <span className="text-white font-bold text-lg">{index + 1}</span>
                   </div>
                   
-                  {/* Glowing Border Effect */}
+                  {/* Glowing Border*/}
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400/20 via-blue-500/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm"></div>
                   
-                  {/* Content */}
+                  
                   <div className="relative z-10">
                     <div className="mb-4">
                       <div className="w-16 h-16 bg-gradient-to-br from-cyan-400/20 to-blue-600/20 rounded-xl flex items-center justify-center mb-4">
@@ -778,7 +760,6 @@ const modules = [
                     </p>
                   </div>
                   
-                  {/* Subtle Pattern Overlay */}
                   <div className="absolute inset-0 rounded-2xl opacity-5">
                     <div className="w-full h-full bg-gradient-to-br from-cyan-400 to-transparent rounded-2xl"></div>
                   </div>
@@ -795,61 +776,10 @@ const modules = [
     {/* GOALS END */}
 
 
-    
 
 
-
-
-
-
-      {/* <section id="achieve" className="py-20 px-4 bg-gradient-to-b from-slate-600 to-slate-700 relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="data-stream"></div>
-          <div className="security-grid"></div>
-        </div>
-
-        <div className="max-w-4xl mx-auto relative z-10">
-          <div
-            className={`text-center mb-16 ${
-              visibleElements.has("achieve-title") ? "animate-flyInFromTop" : "opacity-0"
-            }`}
-            data-animate-id="achieve-title"
-          >
-            <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">
-              Milestones Achieved
-            </h2>
-          </div>
-          <div className="relative border-l-2 border-cyan-400/30 ml-4">
-            {achieve.map((goal, index) => (
-              <div
-                key={index}
-                className={`relative mb-12 pl-8 group cursor-pointer opacity-0 ${
-                  visibleElements.has(`goal-${index}`)
-                    ? index % 2 === 0
-                      ? "animate-flyInFromLeft"
-                      : "animate-flyInFromRight"
-                    : ""
-                }`}
-                data-animate-id={`goal-${index}`}
-                style={{ animationDelay: `${index * 0.2}s` }}
-                onClick={() => handleFlyingClick(`goal-${index}`)}
-              >
-                <span className="absolute left-[-16px] top-1 w-6 h-6 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full shadow-md"></span>
-                <div className="bg-slate-800/70 backdrop-blur-md border border-slate-600 rounded-xl p-6 shadow-lg group-hover:shadow-cyan-500/20 transition-all duration-300">
-                  <h3 className="text-xl font-semibold text-cyan-300 group-hover:text-cyan-200 mb-2">
-                    Breakthrough {index + 1}
-                  </h3>
-                  <p className="text-gray-300">{goal}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
-      {/* Team Section */}
+      {/* Team*/}
       <section id="team" className="py-20 px-8 bg-gradient-to-b from-slate-700 to-slate-800 relative overflow-hidden">
-        {/* Animated Background */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="neural-network"></div>
           <div className="pulse-rings"></div>
@@ -898,9 +828,9 @@ const modules = [
         </div>
       </section>
 
-      {/* Location Section */}
+
+      {/* Location*/}
       <section id="location" className="py-20 px-8 bg-gradient-to-b from-slate-800 to-slate-700 relative overflow-hidden">
-        {/* Animated Background */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="location-tracker"></div>
           <div className="satellite-orbit"></div>
@@ -986,9 +916,9 @@ const modules = [
         </div>
       </section>
 
-      {/* Contact Us Section */}
+
+      {/* Contact Us*/}
       <section id="contact" className="py-20 px-8 bg-gradient-to-b from-slate-700 to-slate-800 relative overflow-hidden">
-        {/* Animated Background */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="communication-waves"></div>
           <div className="signal-towers"></div>
@@ -1008,7 +938,7 @@ const modules = [
               Ready to revolutionize your security? Get in touch with our team
             </p>
           </div>
-          {/* Contact Cards Grid */}
+
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {[
               {
@@ -1057,7 +987,9 @@ const modules = [
               </div>
             ))}
           </div>
-          {/* Social Links Section */}
+
+
+          {/* Social Links*/}
           <div
             className={`text-center ${
               visibleElements.has("contact-social") ? "animate-flyInFromLeft" : "opacity-0"
@@ -1094,6 +1026,8 @@ const modules = [
               ))}
             </div>
           </div>
+
+          
           {/* Call to Action */}
           <div
             className={`text-center mt-12 ${
@@ -1104,6 +1038,8 @@ const modules = [
           ></div>
         </div>
       </section>
+
+
 
       {/* Footer */}
       <footer className="py-12 px-8 border-t border-slate-600 bg-slate-800">

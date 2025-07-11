@@ -1,4 +1,4 @@
-/* Existing animations */
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -119,7 +119,7 @@
   }
 }
 
-/* Apply animations */
+
 .animate-fadeInUp {
   animation: fadeInUp 1s ease-out;
 }
@@ -164,7 +164,7 @@
   animation: flyInFromRight 0.8s ease-out forwards;
 }
 
-/* NEW BACKGROUND ANIMATIONS FOR SECTIONS */
+ONS */
 
 /* Product Overview - Scanning Grid */
 .scanning-grid {
@@ -623,7 +623,7 @@
   }
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 768px) {
   .scanning-grid {
     background-size: 30px 30px;
