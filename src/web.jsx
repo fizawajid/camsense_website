@@ -178,11 +178,10 @@ const modules = [
   ]
 
   const achievements = [
-    "Validated the market and built initial prototype.",
-    "Secured $25k AWS credits to scale.",
-    "Pilots and trials in marts, university & NICAT",
-    "Booked 1000+ cameras to date",
-  ]
+    {text:"Validated the market and built initial prototype.", date: "2024-Q4"},
+    {text:"Secured $25k AWS credits to scale.", date:"2025-Q1"},
+    {text:"Conducted pilots and trials in marts, universities, and offices, and booked 1,000+ cameras to date", date:"2025-Q2"}
+  ];
 
   const teamMembers = [
     {
@@ -636,37 +635,47 @@ const modules = [
     </div>
 
     <div className="relative border-l-2 border-cyan-400/30 ml-4">
-      {achievements.map((achievement, index) => (
-        <div
-          key={index}
-          className={`relative mb-12 pl-8 group cursor-pointer opacity-0 ${
-            visibleElements.has(`achievement-${index}`)
-              ? index % 2 === 0
-                ? "animate-flyInFromLeft"
-                : "animate-flyInFromRight"
-              : ""
-          }`}
-          data-animate-id={`achievement-${index}`}
-          style={{ animationDelay: `${index * 0.2}s` }}
-          onClick={() => handleFlyingClick(`achievement-${index}`)}
-        >
-          <span className="absolute left-[-16px] top-1 w-6 h-6 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full shadow-md"></span>
-          <div className="bg-slate-800/70 backdrop-blur-md border border-slate-600 rounded-xl p-6 shadow-lg group-hover:shadow-cyan-500/20 transition-all duration-300">
-            <h3 className="text-xl font-semibold text-cyan-300 group-hover:text-cyan-200 mb-2">
-            {index + 1}.
-            </h3>
-            <p className="text-gray-300">{achievement}</p>
-          </div>
+  {achievements.map((achievement, index) => (
+    <div
+      key={index}
+      className={`relative mb-12 pl-8 group cursor-pointer opacity-0 ${
+        visibleElements.has(`achievement-${index}`)
+          ? index % 2 === 0
+            ? "animate-flyInFromLeft"
+            : "animate-flyInFromRight"
+          : ""
+      }`}
+      data-animate-id={`achievement-${index}`}
+      style={{ animationDelay: `${index * 0.2}s` }}
+      onClick={() => handleFlyingClick(`achievement-${index}`)}
+    >
+      {/* Timeline dot */}
+      <span className="absolute left-[-16px] top-1 w-6 h-6 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full shadow-md"></span>
+
+      {/* Achievement Box */}
+      <div className="bg-slate-800/70 backdrop-blur-md border border-slate-600 rounded-xl p-6 shadow-lg group-hover:shadow-cyan-500/20 transition-all duration-300 relative">
+        {/* Date Badge */}
+        <div className="absolute top-2 right-4 text-sm px-3 py-1 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md">
+          {achievement.date}
         </div>
-      ))}
+
+        {/* Text */}
+        <h3 className="text-xl font-semibold text-cyan-300 group-hover:text-cyan-200 mb-2">
+          {index + 1}.
+        </h3>
+        <p className="text-gray-300">{achievement.text}</p>
+      </div>
     </div>
+  ))}
+</div>
+
   </div>
 </section>
 
 
 
 
-
+   
     {/* goals */}
 <section id="goals" className="py-20 px-4 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
   <div className="absolute inset-0 pointer-events-none">
@@ -774,6 +783,8 @@ const modules = [
 </section>
 
     {/* GOALS END */}
+
+
 
 
 
@@ -1027,7 +1038,7 @@ const modules = [
             </div>
           </div>
 
-          
+
           {/* Call to Action */}
           <div
             className={`text-center mt-12 ${
