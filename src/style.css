@@ -1,0 +1,667 @@
+/* Existing animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(34, 211, 238, 0.6);
+  }
+}
+
+@keyframes bounce-subtle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes flyTowards {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1) translateZ(10px);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes flyInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-100px) rotateX(90deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+  }
+}
+
+@keyframes flyInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(100px) rotateX(-90deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+  }
+}
+
+@keyframes flyInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px) rotateY(90deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) rotateY(0deg);
+  }
+}
+
+@keyframes flyInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px) rotateY(-90deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) rotateY(0deg);
+  }
+}
+
+/* Apply animations */
+.animate-fadeInUp {
+  animation: fadeInUp 1s ease-out;
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 1s ease-out;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 1s ease-out;
+}
+
+.animate-slideDown {
+  animation: slideDown 0.3s ease-out;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 2s ease-in-out infinite;
+}
+
+.animate-flyTowards {
+  animation: flyTowards 0.6s ease-out;
+}
+
+.animate-flyInFromTop {
+  animation: flyInFromTop 0.8s ease-out forwards;
+}
+
+.animate-flyInFromBottom {
+  animation: flyInFromBottom 0.8s ease-out forwards;
+}
+
+.animate-flyInFromLeft {
+  animation: flyInFromLeft 0.8s ease-out forwards;
+}
+
+.animate-flyInFromRight {
+  animation: flyInFromRight 0.8s ease-out forwards;
+}
+
+/* NEW BACKGROUND ANIMATIONS FOR SECTIONS */
+
+/* Product Overview - Scanning Grid */
+.scanning-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(rgba(34, 211, 238, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: scanningGrid 8s linear infinite;
+}
+
+@keyframes scanningGrid {
+  0% {
+    transform: translateX(-50px) translateY(-50px);
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+/* Product Overview - Floating Dots */
+.floating-dots::before,
+.floating-dots::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(34, 211, 238, 0.6);
+  border-radius: 50%;
+  animation: floatingDots 6s ease-in-out infinite;
+}
+
+.floating-dots::before {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.floating-dots::after {
+  top: 60%;
+  right: 15%;
+  animation-delay: 3s;
+}
+
+@keyframes floatingDots {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* Modules - Circuit Pattern */
+.circuit-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 25% 25%, rgba(34, 211, 238, 0.1) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, rgba(59, 130, 246, 0.1) 2px, transparent 2px);
+  background-size: 100px 100px;
+  animation: circuitPattern 12s linear infinite;
+}
+
+@keyframes circuitPattern {
+  0% {
+    background-position: 0 0, 50px 50px;
+  }
+  100% {
+    background-position: 100px 100px, 150px 150px;
+  }
+}
+
+/* Modules - Radar Sweep */
+.radar-sweep {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  margin: -150px 0 0 -150px;
+  border: 2px solid rgba(34, 211, 238, 0.2);
+  border-radius: 50%;
+  animation: radarSweep 4s linear infinite;
+}
+
+.radar-sweep::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(34, 211, 238, 0.8), transparent);
+  transform-origin: left center;
+  animation: radarLine 4s linear infinite;
+}
+
+@keyframes radarSweep {
+  0% {
+    transform: rotate(0deg) scale(0.8);
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+    transform: rotate(180deg) scale(1);
+  }
+  100% {
+    transform: rotate(360deg) scale(0.8);
+    opacity: 0.3;
+  }
+}
+
+@keyframes radarLine {
+  0% {
+    width: 0;
+    transform: rotate(0deg);
+  }
+  100% {
+    width: 150px;
+    transform: rotate(360deg);
+  }
+}
+
+/* Goals - Data Stream */
+.data-stream {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(34, 211, 238, 0.1) 50%, transparent 100%);
+  animation: dataStream 8s linear infinite;
+}
+
+.data-stream::before,
+.data-stream::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent 0%, rgba(34, 211, 238, 0.6) 50%, transparent 100%);
+  animation: dataStreamVertical 6s linear infinite;
+}
+
+.data-stream::before {
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.data-stream::after {
+  right: 30%;
+  animation-delay: 3s;
+}
+
+@keyframes dataStream {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes dataStreamVertical {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* Goals - Security Grid */
+.security-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(rgba(34, 211, 238, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+  animation: securityGrid 10s ease-in-out infinite;
+}
+
+@keyframes securityGrid {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+/* Team - Neural Network */
+.neural-network {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.neural-network::before,
+.neural-network::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border: 2px solid rgba(34, 211, 238, 0.2);
+  border-radius: 50%;
+  animation: neuralNetwork 8s ease-in-out infinite;
+}
+
+.neural-network::before {
+  top: 20%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.neural-network::after {
+  bottom: 20%;
+  right: 20%;
+  animation-delay: 4s;
+}
+
+@keyframes neuralNetwork {
+  0%,
+  100% {
+    transform: scale(0.8);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.6;
+  }
+}
+
+/* Team - Pulse Rings */
+.pulse-rings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  margin: -100px 0 0 -100px;
+}
+
+.pulse-rings::before,
+.pulse-rings::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(34, 211, 238, 0.3);
+  border-radius: 50%;
+  animation: pulseRings 3s ease-out infinite;
+}
+
+.pulse-rings::after {
+  animation-delay: 1.5s;
+}
+
+@keyframes pulseRings {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Location - Location Tracker */
+.location-tracker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.location-tracker::before {
+  content: "";
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  width: 20px;
+  height: 20px;
+  background: rgba(34, 211, 238, 0.6);
+  border-radius: 50%;
+  animation: locationTracker 5s ease-in-out infinite;
+}
+
+@keyframes locationTracker {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(100px, -50px) scale(1.2);
+  }
+  50% {
+    transform: translate(200px, 50px) scale(0.8);
+  }
+  75% {
+    transform: translate(50px, 100px) scale(1.1);
+  }
+}
+
+/* Location - Satellite Orbit */
+.satellite-orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  margin: -150px 0 0 -150px;
+  border: 1px dashed rgba(34, 211, 238, 0.3);
+  border-radius: 50%;
+  animation: satelliteOrbit 15s linear infinite;
+}
+
+.satellite-orbit::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: rgba(34, 211, 238, 0.8);
+  border-radius: 50%;
+  margin-left: -5px;
+  animation: satelliteMove 15s linear infinite;
+}
+
+@keyframes satelliteOrbit {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes satelliteMove {
+  0% {
+    box-shadow: 0 0 10px rgba(34, 211, 238, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(34, 211, 238, 1);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(34, 211, 238, 0.6);
+  }
+}
+
+/* Contact - Communication Waves */
+.communication-waves {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.communication-waves::before,
+.communication-waves::after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border: 2px solid rgba(34, 211, 238, 0.2);
+  border-radius: 50%;
+  animation: communicationWaves 4s ease-out infinite;
+}
+
+.communication-waves::before {
+  top: 20%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.communication-waves::after {
+  bottom: 20%;
+  right: 20%;
+  animation-delay: 2s;
+}
+
+@keyframes communicationWaves {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+/* Contact - Signal Towers */
+.signal-towers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.signal-towers::before,
+.signal-towers::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 60px;
+  background: linear-gradient(180deg, transparent 0%, rgba(34, 211, 238, 0.6) 50%, transparent 100%);
+  animation: signalTowers 3s ease-in-out infinite;
+}
+
+.signal-towers::before {
+  top: 25%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.signal-towers::after {
+  top: 45%;
+  right: 25%;
+  animation-delay: 1.5s;
+}
+
+@keyframes signalTowers {
+  0%,
+  100% {
+    transform: scaleY(0.5);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scaleY(1.2);
+    opacity: 0.8;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .scanning-grid {
+    background-size: 30px 30px;
+  }
+
+  .radar-sweep {
+    width: 200px;
+    height: 200px;
+    margin: -100px 0 0 -100px;
+  }
+
+  .radar-sweep::before {
+    width: 100px;
+  }
+
+  .neural-network::before,
+  .neural-network::after {
+    width: 60px;
+    height: 60px;
+  }
+
+  .pulse-rings {
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+  }
+
+  .satellite-orbit {
+    width: 200px;
+    height: 200px;
+    margin: -100px 0 0 -100px;
+  }
+
+  .communication-waves::before,
+  .communication-waves::after {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+

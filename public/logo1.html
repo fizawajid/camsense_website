@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Camsense Logo</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+    body {
+      margin: 0;
+      background-color: #1a1a1a; /* Change to white to test light theme */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 48px;
+    }
+
+    .c-wrapper {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      margin-right: 10px;
+    }
+
+    .c-shape {
+      width: 95px;
+      height: 95px;
+      border-radius: 50%;
+      background: conic-gradient(from 135deg, #00b4d8, #6c63ff 270deg, transparent 270deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .c-shape::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background-color: #1a1a1a;
+      border-radius: 50%;
+    }
+
+    .camera {
+      width: 45px;
+      height: 45px;
+      background: white;
+      border-radius: 50%;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .camera::before {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      background: #1a1a1a;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+
+    .camera::after {
+      content: '';
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      background: white;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      background: #1a1a1a;
+      border-radius: 50%;
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      z-index: 3;
+    }
+
+    .logo-text {
+      font-weight: 600;
+      background: linear-gradient(90deg, #00b4d8, #6c63ff, #ff00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">
+    <div class="c-wrapper">
+      <div class="c-shape">
+        <div class="camera">
+          <div class="dot"></div>
+        </div>
+      </div>
+    </div>
+    <div class="logo-text">amsense</div>
+  </div>
+</body>
+</html>
