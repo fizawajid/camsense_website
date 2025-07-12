@@ -177,6 +177,8 @@ const modules = [
     "Deliver actionable analytics for better security decisions",
   ]
 
+  
+
   const achievements = [
     {text:"Validated the market and built initial prototype.", date: "2024-Q4"},
     {text:"Secured $25k AWS credits to scale.", date:"2025-Q1"},
@@ -187,37 +189,42 @@ const modules = [
     {
       name: "Hafiz Muhammad Safiullah",
       role: "CEO & Founder",
-      image: "/placeholder.svg?height=300&width=300",
+      image: "/female.png",
+    },
+     {
+      name: "Muhammad Abdullah Baig",
+      role: "Co-Founder",
+      image: "/female.png",
     },
     {
       name: "Eshaal Rasheed",
-      role: "CTO",
-      image: "/placeholder.svg?height=300&width=300",
+      role: "IT Coordinator",
+      image: "/eshaal.jpg",
     },
     {
       name: "Fiza Wajid",
-      role: "Head of Security",
-      image: "/placeholder.svg?height=300&width=300",
+      role: "Software Enginner",
+      image: "/female.png",
     },
     {
-      name: "Fatima",
-      role: "Lead Developer",
-      image: "/placeholder.svg?height=300&width=300",
+      name: "Ghulaam Fatima",
+      role: "Graphic Designer",
+      image: "/fatima.jpg",
     },
         {
       name: "Areeba Waqar",
-      role: "Lead Developer",
-      image: "/placeholder.svg?height=300&width=300",
+      role: "Software Enginner",
+      image: "/areeba.jpg",
     },
         {
       name: "Bisma Wajid",
-      role: "Lead Developer",
-      image: "/placeholder.svg?height=300&width=300",
+      role: "Business Manager",
+      image: "/bisma.jpg",
     },
         {
       name: "Mahad Malik",
-      role: "Lead Developer",
-      image: "/placeholder.svg?height=300&width=300",
+      role: "Software Enginner",
+      image: "/mahad.jpg",
     },
     
   ]
@@ -621,71 +628,6 @@ const modules = [
       </section>
 
 
-
-
-
-            {/* achievements */}
-{/* <section id="achievements" className="py-20 px-4 min-h-[50vh] bg-gradient-to-b from-slate-600 to-slate-700 relative overflow-hidden">
-  <div className="absolute inset-0 pointer-events-none">
-    <div className="data-stream"></div>
-    <div className="security-grid"></div>
-  </div>
-
-  <div className="max-w-4xl mx-auto relative z-10">
-    <div
-      className={`text-center mb-16 ${
-        visibleElements.has("achievements-title") ? "animate-flyInFromTop" : "opacity-0"
-      }`}
-      data-animate-id="achievements-title"
-    >
-      <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">
-        What Have We Done So Far?
-      </h2>
-      <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-        Highlights of our journey and milestones we’ve reached
-      </p>
-    </div>
-
-    <div className="relative border-l-2 border-cyan-400/30 ml-4">
-  {achievements.map((achievement, index) => (
-    <div
-      key={index}
-      className={`relative mb-12 pl-8 group cursor-pointer opacity-0 ${
-        visibleElements.has(`achievement-${index}`)
-          ? index % 2 === 0
-            ? "animate-flyInFromLeft"
-            : "animate-flyInFromRight"
-          : ""
-      }`}
-      data-animate-id={`achievement-${index}`}
-      style={{ animationDelay: `${index * 0.2}s` }}
-      onClick={() => handleFlyingClick(`achievement-${index}`)}
-    >
-     
-      <span className="absolute left-[-16px] top-1 w-6 h-6 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full shadow-md"></span>
-
-     
-      <div className="bg-slate-800/70 backdrop-blur-md border border-slate-600 rounded-xl p-6 shadow-lg group-hover:shadow-cyan-500/20 transition-all duration-300 relative">
-        
-        <div className="absolute top-2 right-4 text-sm px-3 py-1 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md">
-          {achievement.date}
-        </div>
-
-      
-        <h3 className="text-xl font-semibold text-cyan-300 group-hover:text-cyan-200 mb-2">
-          {index + 1}.
-        </h3>
-        <p className="text-gray-300">{achievement.text}</p>
-      </div>
-    </div>
-  ))}
-</div>
-
-  </div>
-</section> */}
-
-
-
 {/* achievements */}
 <section id="achievements" className="py-20 px-4 min-h-[50vh] bg-gradient-to-b from-slate-600 to-slate-700 relative overflow-hidden">
   <div className="absolute inset-0 pointer-events-none">
@@ -768,7 +710,7 @@ const modules = [
         </div>
 
         <div
-          className={`bg-slate-800/70 backdrop-blur-md border border-slate-600 rounded-xl p-8 shadow-lg ${
+          className={` bg-slate-800/70 backdrop-blur-md border border-slate-600 rounded-xl p-8 shadow-lg ${
             visibleElements.has("partners-section") ? "animate-flyInFromRight" : "opacity-0"
           }`}
           data-animate-id="partners-section"
@@ -795,20 +737,6 @@ const modules = [
 
 </div>
 
-
-          {/* Partnership Stats */}
-          <div className="mt-8 pt-6 border-t border-slate-600">
-            <div className="grid grid-cols-2 gap-4 text-center">
-              <div className="group cursor-pointer">
-                <div className="text-2xl font-bold text-purple-300 group-hover:text-purple-200 transition-colors">15+</div>
-                <div className="text-sm text-gray-400">Active Partners</div>
-              </div>
-              <div className="group cursor-pointer">
-                <div className="text-2xl font-bold text-pink-300 group-hover:text-pink-200 transition-colors">50+</div>
-                <div className="text-sm text-gray-400">Joint Projects</div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -818,19 +746,23 @@ const modules = [
 
 
 
-
-   
-    {/* goals */}
-<section id="goals" className="py-20 px-4 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+{/* goals */}
+ 
+<section
+  id="goals"
+  className="py-20 px-4 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden"
+>
+  {/* Background blobs */}
   <div className="absolute inset-0 pointer-events-none">
     <div className="absolute top-10 left-10 w-32 h-32 bg-cyan-500/10 rounded-full blur-xl animate-pulse"></div>
-    <div className="absolute top-32 right-20 w-48 h-48 bg-purple-500/10 rounded-full blur-xl animate-pulse" style={{animationDelay: '1s'}}></div>
-    <div className="absolute bottom-20 left-1/3 w-24 h-24 bg-blue-500/10 rounded-full blur-xl animate-pulse" style={{animationDelay: '2s'}}></div>
-    <div className="absolute bottom-32 right-1/4 w-40 h-40 bg-indigo-500/10 rounded-full blur-xl animate-pulse" style={{animationDelay: '0.5s'}}></div>
+    <div className="absolute top-32 right-20 w-48 h-48 bg-purple-500/10 rounded-full blur-xl animate-pulse" style={{ animationDelay: "1s" }}></div>
+    <div className="absolute bottom-20 left-1/3 w-24 h-24 bg-blue-500/10 rounded-full blur-xl animate-pulse" style={{ animationDelay: "2s" }}></div>
+    <div className="absolute bottom-32 right-1/4 w-40 h-40 bg-indigo-500/10 rounded-full blur-xl animate-pulse" style={{ animationDelay: "0.5s" }}></div>
   </div>
 
   <div className="max-w-7xl mx-auto relative z-10">
-    <div 
+    {/* Title */}
+    <div
       className={`text-center mb-16 ${
         visibleElements.has("goals-title") ? "animate-flyInFromTop" : "opacity-0"
       }`}
@@ -844,89 +776,67 @@ const modules = [
       </p>
     </div>
 
-    {/* Hexagonal Grid Layout */}
-    <div className="relative">
-      <div className="flex justify-center mb-12">
-        <div className="relative">
-          <div className="w-32 h-32 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-full flex items-center justify-center shadow-2xl shadow-cyan-500/30">
-            <div className="w-24 h-24 bg-slate-800 rounded-full flex items-center justify-center">
-              <svg className="w-12 h-12 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </div>
-          </div>
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 animate-ping opacity-20"></div>
-        </div>
-      </div>
-
-      {/* Goals arranged in a circular pattern */}
-      <div className="relative flex flex-wrap justify-center gap-8">
-        {goals.map((goal, index) => {
-          const positions = [
-            'transform translate-x-0 translate-y-0',
-            'transform translate-x-8 translate-y-4',
-            'transform -translate-x-8 translate-y-4',
-            'transform translate-x-16 translate-y-8',
-            'transform -translate-x-16 translate-y-8'
-          ];
-          
-          return (
-            <div
-              key={index}
-              className={`relative w-80 opacity-0 ${
-                visibleElements.has(`goal-${index}`)
-                  ? "animate-flyInFromBottom"
-                  : ""
-              }`}
-              data-animate-id={`goal-${index}`}
-              style={{ animationDelay: `${index * 0.3}s` }}
-              onClick={() => handleFlyingClick(`goal-${index}`)}
-            >
-              {/* Lines */}
-              <div className="absolute top-0 left-1/2 w-0.5 h-8 bg-gradient-to-b from-cyan-400/50 to-transparent transform -translate-x-1/2 -translate-y-8"></div>
-              
-              {/* Goal Card */}
-              <div className="group cursor-pointer">
-                <div className="relative bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-lg border border-slate-600/50 rounded-2xl p-8 shadow-2xl hover:shadow-cyan-500/20 transition-all duration-500 hover:scale-105 hover:rotate-1">
-                 
-                  <div className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
-                    <span className="text-white font-bold text-lg">{index + 1}</span>
-                  </div>
-                  
-                  {/* Glowing Border*/}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400/20 via-blue-500/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm"></div>
-                  
-                  
-                  <div className="relative z-10">
-                    <div className="mb-4">
-                      <div className="w-16 h-16 bg-gradient-to-br from-cyan-400/20 to-blue-600/20 rounded-xl flex items-center justify-center mb-4">
-                        <svg className="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      </div>
-                      <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors">
-                        Goal {index + 1}
-                      </h3>
-                    </div>
-                    <p className="text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors">
-                      {goal}
-                    </p>
-                  </div>
-                  
-                  <div className="absolute inset-0 rounded-2xl opacity-5">
-                    <div className="w-full h-full bg-gradient-to-br from-cyan-400 to-transparent rounded-2xl"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          );
-        })}
+    {/* Central lightning bolt + goals around */}
+<div className="relative flex flex-col md:flex-row md:justify-center md:items-center min-h-[500px] gap-6">
+  {/* Lightning bolt */}
+  <div className="relative z-10 flex justify-center mb-6 md:mb-0">
+    <div className="w-32 h-32 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-full flex items-center justify-center shadow-2xl shadow-cyan-500/30">
+      <div className="w-24 h-24 bg-slate-800 rounded-full flex items-center justify-center">
+        <svg className="w-12 h-12 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
       </div>
     </div>
+    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 animate-ping opacity-20"></div>
+  </div>
+
+  {/* Goals */}
+  <div className="relative flex flex-col md:absolute md:inset-0 md:justify-center md:items-center">
+    {goals.map((goal, index) => {
+      const radiusX = 270;
+      const radiusY = 215;
+      const angle = (2 * Math.PI / goals.length) * index;
+
+      const x = radiusX * Math.cos(angle);
+      const y = radiusY * Math.sin(angle);
+
+      return (
+        <div
+          key={index}
+          className={`w-80 mb-4 md:absolute`}
+          style={{
+            ...(window.innerWidth >= 768
+              ? { transform: `translate(${x}px, ${y}px)` }
+              : {}),
+          }}
+        >
+          <div className="group cursor-pointer">
+            <div className="relative bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-lg border border-slate-600/50 rounded-2xl p-6 shadow-2xl hover:shadow-cyan-500/20 transition-all duration-500 hover:scale-105 hover:rotate-1">
+              <div className="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
+                <span className="text-white font-bold text-sm">{index + 1}</span>
+              </div>
+              <div className="relative z-10">
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors">
+                  Goal {index + 1}
+                </h3>
+                <p className="text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors">
+                  {goal}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</div>
+
+
   </div>
 </section>
 
-    {/* GOALS END */}
+
+   
 
 
 
@@ -964,11 +874,19 @@ const modules = [
       >
         {/* CEO Photo/Avatar */}
         <div className="aspect-square bg-gradient-to-br from-cyan-900/30 to-blue-900/30 rounded-xl border border-cyan-400/30 flex items-center justify-center mb-6 overflow-hidden w-32 h-32 mx-auto">
-          <div className="w-24 h-24 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full flex items-center justify-center">
-            <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-            </svg>
-          </div>
+{/* CEO Photo/Avatar */}
+<div className="aspect-square bg-gradient-to-br from-cyan-900/30 to-blue-900/30 rounded-xl border border-cyan-400/30 flex items-center justify-center mb-6 overflow-hidden w-32 h-32 mx-auto">
+  <img 
+    src={
+      teamMembers.find(m => m.role.toLowerCase().includes('ceo'))?.image || '/placeholder.svg'
+    } 
+    alt={
+      teamMembers.find(m => m.role.toLowerCase().includes('ceo'))?.name || 'CEO'
+    }
+    className="w-24 h-24 rounded-full object-cover"
+  />
+</div>
+
         </div>
         
         {/* CEO Details */}
@@ -1001,13 +919,16 @@ const modules = [
             onClick={() => handleFlyingClick(`team-${index}`)}
           >
             {/* Team Member Photo/Avatar */}
-            <div className="aspect-square bg-gradient-to-br from-cyan-900/30 to-blue-900/30 rounded-xl border border-cyan-400/30 flex items-center justify-center mb-6 overflow-hidden">
-              <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full flex items-center justify-center">
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-              </div>
-            </div>
+<div className="w-30 h-30 overflow-hidden mx-auto mb-4">
+  <img
+    src={member.image}
+    alt={member.name}
+    className="w-full h-full object-cover"
+    onError={(e) => { e.target.src = '/placeholder.png'; }}
+  />
+</div>
+
+
             
             {/* Team Member Details */}
             <h3 className="text-xl font-semibold mb-2 group-hover:text-cyan-300 transition-colors">
