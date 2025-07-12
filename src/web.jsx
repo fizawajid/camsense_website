@@ -185,29 +185,41 @@ const modules = [
 
   const teamMembers = [
     {
-      name: "Alex Johnson",
+      name: "Hafiz Muhammad Safiullah",
       role: "CEO & Founder",
-      description: "AI security expert with 15+ years in computer vision",
       image: "/placeholder.svg?height=300&width=300",
     },
     {
-      name: "Sarah Chen",
+      name: "Eshaal Rasheed",
       role: "CTO",
-      description: "Machine learning specialist and former Google engineer",
       image: "/placeholder.svg?height=300&width=300",
     },
     {
-      name: "Michael Rodriguez",
+      name: "Fiza Wajid",
       role: "Head of Security",
-      description: "Former law enforcement with retail security expertise",
       image: "/placeholder.svg?height=300&width=300",
     },
     {
-      name: "Emily Davis",
+      name: "Fatima",
       role: "Lead Developer",
-      description: "Full-stack developer specializing in real-time systems",
       image: "/placeholder.svg?height=300&width=300",
     },
+        {
+      name: "Areeba Waqar",
+      role: "Lead Developer",
+      image: "/placeholder.svg?height=300&width=300",
+    },
+        {
+      name: "Bisma Wajid",
+      role: "Lead Developer",
+      image: "/placeholder.svg?height=300&width=300",
+    },
+        {
+      name: "Mahad Malik",
+      role: "Lead Developer",
+      image: "/placeholder.svg?height=300&width=300",
+    },
+    
   ]
 
   return (
@@ -613,7 +625,7 @@ const modules = [
 
 
             {/* achievements */}
-<section id="achievements" className="py-20 px-4 min-h-[50vh] bg-gradient-to-b from-slate-600 to-slate-700 relative overflow-hidden">
+{/* <section id="achievements" className="py-20 px-4 min-h-[50vh] bg-gradient-to-b from-slate-600 to-slate-700 relative overflow-hidden">
   <div className="absolute inset-0 pointer-events-none">
     <div className="data-stream"></div>
     <div className="security-grid"></div>
@@ -649,17 +661,17 @@ const modules = [
       style={{ animationDelay: `${index * 0.2}s` }}
       onClick={() => handleFlyingClick(`achievement-${index}`)}
     >
-      {/* Timeline dot */}
+     
       <span className="absolute left-[-16px] top-1 w-6 h-6 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full shadow-md"></span>
 
-      {/* Achievement Box */}
+     
       <div className="bg-slate-800/70 backdrop-blur-md border border-slate-600 rounded-xl p-6 shadow-lg group-hover:shadow-cyan-500/20 transition-all duration-300 relative">
-        {/* Date Badge */}
+        
         <div className="absolute top-2 right-4 text-sm px-3 py-1 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md">
           {achievement.date}
         </div>
 
-        {/* Text */}
+      
         <h3 className="text-xl font-semibold text-cyan-300 group-hover:text-cyan-200 mb-2">
           {index + 1}.
         </h3>
@@ -670,7 +682,139 @@ const modules = [
 </div>
 
   </div>
+</section> */}
+
+
+
+{/* achievements */}
+<section id="achievements" className="py-20 px-4 min-h-[50vh] bg-gradient-to-b from-slate-600 to-slate-700 relative overflow-hidden">
+  <div className="absolute inset-0 pointer-events-none">
+    <div className="data-stream"></div>
+    <div className="security-grid"></div>
+  </div>
+
+  <div className="max-w-7xl mx-auto relative z-10">
+    <div
+      className={`text-center mb-16 ${
+        visibleElements.has("achievements-title") ? "animate-flyInFromTop" : "opacity-0"
+      }`}
+      data-animate-id="achievements-title"
+    >
+      <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">
+        Achievements & Partners
+      </h2>
+      <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+        Our journey milestones and trusted partnerships
+      </p>
+    </div>
+
+    {/* Main Grid Container */}
+    <div className="grid lg:grid-cols-[1.2fr_1fr] gap-12 items-start">
+      
+      {/* Left Side - What Have We Done */}
+      <div className="space-y-8">
+        <div className="mb-8">
+          <h3 className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
+            What Have We Done So Far?
+          </h3>
+          <p className="text-lg text-gray-300">
+            Highlights of our journey and milestones we've reached
+          </p>
+        </div>
+
+        <div className="relative border-l-2 border-cyan-400/30 ml-4">
+          {achievements.map((achievement, index) => (
+            <div
+              key={index}
+              className={`relative mb-8 pl-8 group cursor-pointer opacity-0 ${
+                visibleElements.has(`achievement-${index}`)
+                  ? "animate-flyInFromLeft"
+                  : ""
+              }`}
+              data-animate-id={`achievement-${index}`}
+              style={{ animationDelay: `${index * 0.2}s` }}
+              onClick={() => handleFlyingClick(`achievement-${index}`)}
+            >
+              {/* Timeline dot */}
+              <span className="absolute left-[-16px] top-1 w-6 h-6 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full shadow-md"></span>
+
+              {/* Achievement Box */}
+              <div className="bg-slate-800/70 backdrop-blur-md border border-slate-600 rounded-xl p-6 shadow-lg group-hover:shadow-cyan-500/20 transition-all duration-300 relative">
+                {/* Date Badge */}
+                <div className="absolute top-2 right-4 text-sm px-3 py-1 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md">
+                  {achievement.date}
+                </div>
+
+                {/* Text */}
+                <h4 className="text-xl font-semibold text-cyan-300 group-hover:text-cyan-200 mb-2">
+                  {index + 1}.
+                </h4>
+                <p className="text-gray-300 text-base">{achievement.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Right Side - Partners */}
+      <div className="space-y-8">
+        <div className="mb-8">
+          <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-300 to-pink-400 bg-clip-text text-transparent">
+            Our Partners
+          </h3>
+          <p className="text-gray-300 text-base">
+            Trusted partnerships that drive our success
+          </p>
+        </div>
+
+        <div
+          className={`bg-slate-800/70 backdrop-blur-md border border-slate-600 rounded-xl p-8 shadow-lg ${
+            visibleElements.has("partners-section") ? "animate-flyInFromRight" : "opacity-0"
+          }`}
+          data-animate-id="partners-section"
+          style={{ animationDelay: "0.3s" }}
+        >
+          {/* Partner Logos Grid */}
+<div className="grid grid-cols-2 gap-8 items-center justify-items-center">
+<div className="w-40 h-24 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/30">
+  <img 
+    src="/image/images.jpeg" 
+    alt="Company 2" 
+    className="max-w-full max-h-full object-contain opacity-100 p-2"
+  />
+</div>
+
+
+<div className="w-40 h-24 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/30">
+  <img 
+    src="/image/nicat.png" 
+    alt="Company 2" 
+    className="max-w-full max-h-full object-contain opacity-100 p-2"
+  />
+</div>
+
+</div>
+
+
+          {/* Partnership Stats */}
+          <div className="mt-8 pt-6 border-t border-slate-600">
+            <div className="grid grid-cols-2 gap-4 text-center">
+              <div className="group cursor-pointer">
+                <div className="text-2xl font-bold text-purple-300 group-hover:text-purple-200 transition-colors">15+</div>
+                <div className="text-sm text-gray-400">Active Partners</div>
+              </div>
+              <div className="group cursor-pointer">
+                <div className="text-2xl font-bold text-pink-300 group-hover:text-pink-200 transition-colors">50+</div>
+                <div className="text-sm text-gray-400">Joint Projects</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
 
 
 
@@ -787,57 +931,102 @@ const modules = [
 
 
 
+    {/* Team*/}
+<section id="team" className="py-20 px-8 bg-gradient-to-b from-slate-700 to-slate-800 relative overflow-hidden">
+  <div className="absolute inset-0 pointer-events-none">
+    <div className="neural-network"></div>
+    <div className="pulse-rings"></div>
+  </div>
+  <div className="max-w-7xl mx-auto relative z-10">
+    <div
+      className={`text-center mb-16 ${
+        visibleElements.has("team-title") ? "animate-flyInFromTop" : "opacity-0"
+      }`}
+      data-animate-id="team-title"
+    >
+      <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">
+        Our Team
+      </h2>
+      <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+        Meet the experts behind our revolutionary AI security solutions
+      </p>
+    </div>
 
-
-      {/* Team*/}
-      <section id="team" className="py-20 px-8 bg-gradient-to-b from-slate-700 to-slate-800 relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="neural-network"></div>
-          <div className="pulse-rings"></div>
+    {/* CEO Section - Top Center */}
+    <div className="flex justify-center mb-16">
+      <div
+        className={`group bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-8 border border-slate-600 hover:border-cyan-400/50 transition-all duration-300 shadow-lg hover:shadow-2xl cursor-pointer max-w-md ${
+          visibleElements.has("team-ceo") ? "animate-flyInFromTop" : "opacity-0"
+        } ${clickedElement === "team-ceo" ? "animate-flyTowards" : "hover:scale-105"}`}
+        data-animate-id="team-ceo"
+        style={{ animationDelay: "0.2s" }}
+        onClick={() => handleFlyingClick("team-ceo")}
+      >
+        {/* CEO Photo/Avatar */}
+        <div className="aspect-square bg-gradient-to-br from-cyan-900/30 to-blue-900/30 rounded-xl border border-cyan-400/30 flex items-center justify-center mb-6 overflow-hidden w-32 h-32 mx-auto">
+          <div className="w-24 h-24 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full flex items-center justify-center">
+            <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+          </div>
         </div>
+        
+        {/* CEO Details */}
+        <div className="text-center">
+          <h3 className="text-2xl font-bold mb-2 group-hover:text-cyan-300 transition-colors">
+            {teamMembers.find(member => member.role.toLowerCase().includes('ceo'))?.name || 'CEO Name'}
+          </h3>
+          <p className="text-cyan-300 font-medium mb-4 text-lg">
+            {teamMembers.find(member => member.role.toLowerCase().includes('ceo'))?.role || 'Chief Executive Officer'}
+          </p>
+          <p className="text-gray-300 group-hover:text-gray-200 transition-colors">
+            {teamMembers.find(member => member.role.toLowerCase().includes('ceo'))?.description}
+          </p>
+        </div>
+      </div>
+    </div>
 
-        <div className="max-w-7xl mx-auto relative z-10">
+    {/* Rest of Team Members */}
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      {teamMembers
+        .filter(member => !member.role.toLowerCase().includes('ceo'))
+        .map((member, index) => (
           <div
-            className={`text-center mb-16 ${
-              visibleElements.has("team-title") ? "animate-flyInFromTop" : "opacity-0"
-            }`}
-            data-animate-id="team-title"
+            key={index}
+            className={`group bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-6 border border-slate-600 hover:border-cyan-400/50 transition-all duration-300 shadow-lg hover:shadow-2xl cursor-pointer ${
+              visibleElements.has(`team-${index}`) ? "animate-flyInFromBottom" : "opacity-0"
+            } ${clickedElement === `team-${index}` ? "animate-flyTowards" : "hover:scale-105"}`}
+            data-animate-id={`team-${index}`}
+            style={{ animationDelay: `${(index + 1) * 0.1}s` }}
+            onClick={() => handleFlyingClick(`team-${index}`)}
           >
-            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">
-              Our Team
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Meet the experts behind our revolutionary AI security solutions
+            {/* Team Member Photo/Avatar */}
+            <div className="aspect-square bg-gradient-to-br from-cyan-900/30 to-blue-900/30 rounded-xl border border-cyan-400/30 flex items-center justify-center mb-6 overflow-hidden">
+              <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full flex items-center justify-center">
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </div>
+            </div>
+            
+            {/* Team Member Details */}
+            <h3 className="text-xl font-semibold mb-2 group-hover:text-cyan-300 transition-colors">
+              {member.name}
+            </h3>
+            <p className="text-cyan-300 font-medium mb-3">{member.role}</p>
+            <p className="text-gray-300 text-sm group-hover:text-gray-200 transition-colors">
+              {member.description}
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map((member, index) => (
-              <div
-                key={index}
-                className={`group bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-6 border border-slate-600 hover:border-cyan-400/50 transition-all duration-300 shadow-lg hover:shadow-2xl cursor-pointer ${
-                  visibleElements.has(`team-${index}`) ? "animate-flyInFromBottom" : "opacity-0"
-                } ${clickedElement === `team-${index}` ? "animate-flyTowards" : "hover:scale-105"}`}
-                data-animate-id={`team-${index}`}
-                style={{ animationDelay: `${index * 0.1}s` }}
-                onClick={() => handleFlyingClick(`team-${index}`)}
-              >
-                <div className="aspect-square bg-gradient-to-br from-cyan-900/30 to-blue-900/30 rounded-xl border border-cyan-400/30 flex items-center justify-center mb-6 overflow-hidden">
-                  <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full flex items-center justify-center">
-                    <Users className="w-8 h-8" />
-                  </div>
-                </div>
-                <h3 className="text-xl font-semibold mb-2 group-hover:text-cyan-300 transition-colors">
-                  {member.name}
-                </h3>
-                <p className="text-cyan-300 font-medium mb-3">{member.role}</p>
-                <p className="text-gray-300 text-sm group-hover:text-gray-200 transition-colors">
-                  {member.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        ))}
+    </div>
+  </div>
+</section>
+
+
+
+
+
 
 
       {/* Location*/}
