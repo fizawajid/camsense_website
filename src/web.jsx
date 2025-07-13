@@ -189,12 +189,12 @@ const modules = [
     {
       name: "Hafiz Muhammad Safiullah",
       role: "CEO & Founder",
-      image: "/female.png",
+      image: "/ceo.jpg",
     },
      {
       name: "Muhammad Abdullah Baig",
       role: "Co-Founder",
-      image: "/female.png",
+      image: "/female2.png",
     },
     {
       name: "Eshaal Rasheed",
@@ -204,7 +204,7 @@ const modules = [
     {
       name: "Fiza Wajid",
       role: "Software Enginner",
-      image: "/female.png",
+      image: "/female2.png",
     },
     {
       name: "Ghulaam Fatima",
@@ -510,122 +510,145 @@ const modules = [
 
 
       {/* Modules Section */}
-      <section id="modules" className="relative py-20 px-8 bg-gradient-to-b from-slate-700 to-slate-600 overflow-hidden">
-       
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="circuit-pattern"></div>
-          <div className="radar-sweep"></div>
-        </div>
+     {/* Modules Section */}
+<section id="modules" className="relative py-20 px-8 bg-gradient-to-b from-slate-700 to-slate-600 overflow-hidden">
+ 
+  <div className="absolute inset-0 pointer-events-none">
+    <div className="circuit-pattern"></div>
+    <div className="radar-sweep"></div>
+  </div>
 
-        <div className="max-w-7xl mx-auto relative z-10">
+  <div className="max-w-7xl mx-auto relative z-10">
+    <div
+      className={`text-center mb-20 ${
+        visibleElements.has("modules-title") ? "animate-flyInFromTop" : "opacity-0"
+      }`}
+      data-animate-id="modules-title"
+    >
+      <h2 className="text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-200 to-blue-300 bg-clip-text text-transparent drop-shadow-2xl">
+        Our Modules
+      </h2>
+      <div className="mt-8 flex justify-center">
+        <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full animate-pulse"></div>
+      </div>
+    </div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-10">
+      {modules.map((module, index) => (
+        <div
+          key={index}
+          className={`relative group cursor-pointer transition-all duration-700 transform-gpu perspective-1000 ${
+            visibleElements.has(`module-${index}`) 
+              ? "animate-slideInUp opacity-100" 
+              : "opacity-0 translate-y-12"
+          } ${clickedElement === `module-${index}` ? "animate-flyTowards" : ""} ${
+            activeModule === index ? "scale-105 z-20" : "hover:scale-110 hover:z-10"
+          }`}
+          data-animate-id={`module-${index}`}
+          style={{
+            animationDelay: visibleElements.has(`module-${index}`) ? `${index * 150}ms` : '0ms',
+            animationDuration: '800ms',
+            animationFillMode: 'both',
+            transformStyle: "preserve-3d",
+          }}
+          onMouseEnter={() => setActiveModule(index)}
+          onClick={() => handleFlyingClick(`module-${index}`)}
+        >
+         
           <div
-            className={`text-center mb-20 ${
-              visibleElements.has("modules-title") ? "animate-flyInFromTop" : "opacity-0"
-            }`}
-            data-animate-id="modules-title"
+            className="relative h-80 transform-gpu transition-all duration-700 group-hover:rotateY-12 group-hover:rotateX-6"
+            style={{ transformStyle: "preserve-3d" }}
           >
-            <h2 className="text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-200 to-blue-300 bg-clip-text text-transparent drop-shadow-2xl">
-              Our Modules
-            </h2>
-            <div className="mt-8 flex justify-center">
-              <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full animate-pulse"></div>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-10">
-            {modules.map((module, index) => (
+            
+            <div className="absolute inset-0 bg-black/20 rounded-2xl blur-xl transform translate-y-4 group-hover:translate-y-6 transition-all duration-500"></div>
+            
+            <div className="relative h-full bg-gradient-to-br from-slate-800/90 to-slate-700/90 rounded-2xl border border-slate-600/50 backdrop-blur-sm overflow-hidden group-hover:border-slate-500/70 transition-all duration-500 shadow-2xl group-hover:shadow-cyan-500/20">
+            
               <div
-                key={index}
-                className={`relative group cursor-pointer transition-all duration-700 transform-gpu perspective-1000 ${
-                  visibleElements.has(`module-${index}`) ? "animate-flyInFromBottom" : "opacity-0"
-                } ${clickedElement === `module-${index}` ? "animate-flyTowards" : ""} ${
-                  activeModule === index ? "scale-105 z-20" : "hover:scale-110 hover:z-10"
-                }`}
-                data-animate-id={`module-${index}`}
-                style={{
-                  animationDelay: `${index * 0.1}s`,
-                  transformStyle: "preserve-3d",
-                }}
-                onMouseEnter={() => setActiveModule(index)}
-                onClick={() => handleFlyingClick(`module-${index}`)}
-              >
-               
-                <div
-                  className="relative h-80 transform-gpu transition-all duration-700 group-hover:rotateY-12 group-hover:rotateX-6"
-                  style={{ transformStyle: "preserve-3d" }}
-                >
+                className={`absolute inset-0 bg-gradient-to-br ${module.color} opacity-0 group-hover:opacity-20 transition-all duration-500`}
+              ></div>
+             
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-out"></div>
+              
+              <div className="relative h-full p-8 flex flex-col justify-between">
+                
+                <div className="relative mb-6">
                   
-                  <div className="absolute inset-0 bg-black/20 rounded-2xl blur-xl transform translate-y-4 group-hover:translate-y-6 transition-all duration-500"></div>
-                  
-                  <div className="relative h-full bg-gradient-to-br from-slate-800/90 to-slate-700/90 rounded-2xl border border-slate-600/50 backdrop-blur-sm overflow-hidden group-hover:border-slate-500/70 transition-all duration-500 shadow-2xl group-hover:shadow-cyan-500/20">
-                  
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br ${module.color} opacity-0 group-hover:opacity-20 transition-all duration-500`}
-                    ></div>
+                  <div
+                    className={`absolute inset-0 w-20 h-20 bg-gradient-to-br ${module.color} rounded-xl opacity-0 group-hover:opacity-40 blur-lg transform scale-125 transition-all duration-500`}
+                  ></div>
+                
+                  <div
+                    className={`relative w-20 h-20 bg-gradient-to-br ${module.color} rounded-xl flex items-center justify-center text-white shadow-2xl transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-12 group-hover:translate-y-[-8px]`}
+                  >
+                    {module.icon}
                    
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-out"></div>
-                    
-                    <div className="relative h-full p-8 flex flex-col justify-between">
-                      
-                      <div className="relative mb-6">
-                        
-                        <div
-                          className={`absolute inset-0 w-20 h-20 bg-gradient-to-br ${module.color} rounded-xl opacity-0 group-hover:opacity-40 blur-lg transform scale-125 transition-all duration-500`}
-                        ></div>
-                      
-                        <div
-                          className={`relative w-20 h-20 bg-gradient-to-br ${module.color} rounded-xl flex items-center justify-center text-white shadow-2xl transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-12 group-hover:translate-y-[-8px]`}
-                        >
-                          {module.icon}
-                         
-                          <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent rounded-xl"></div>
-                        </div>
-                        
-                        <div
-                          className="absolute top-0 left-0 w-2 h-2 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 animate-ping"
-                          style={{ animationDelay: "0s" }}
-                        ></div>
-                        <div
-                          className="absolute top-4 right-2 w-1 h-1 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 animate-ping"
-                          style={{ animationDelay: "0.5s" }}
-                        ></div>
-                        <div
-                          className="absolute bottom-2 left-4 w-1.5 h-1.5 bg-purple-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 animate-ping"
-                          style={{ animationDelay: "1s" }}
-                        ></div>
-                      </div>
-                  
-                      <div className="flex-1">
-                        <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-cyan-300 transition-all duration-300 transform group-hover:translate-y-[-2px]">
-                          {module.title}
-                        </h3>
-                        <p className="text-gray-300 group-hover:text-gray-100 transition-all duration-300 leading-relaxed">
-                          {module.description}
-                        </p>
-                      </div>
-                      
-                      <div className="mt-6 relative">
-                        <div className="w-full h-1 bg-slate-600 rounded-full overflow-hidden">
-                          <div
-                            className={`h-full bg-gradient-to-r ${module.color} transform translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-1000 ease-out`}
-                          ></div>
-                        </div>
-                      </div>
-                    
-                      <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-cyan-400/50 opacity-0 group-hover:opacity-100 transition-all duration-500 transform rotate-45"></div>
-                    </div>
-                    
-                    <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10 group-hover:ring-cyan-400/30 transition-all duration-500"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent rounded-xl"></div>
                   </div>
+                  
+                  <div
+                    className="absolute top-0 left-0 w-2 h-2 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 animate-ping"
+                    style={{ animationDelay: "0s" }}
+                  ></div>
+                  <div
+                    className="absolute top-4 right-2 w-1 h-1 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 animate-ping"
+                    style={{ animationDelay: "0.5s" }}
+                  ></div>
+                  <div
+                    className="absolute bottom-2 left-4 w-1.5 h-1.5 bg-purple-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 animate-ping"
+                    style={{ animationDelay: "1s" }}
+                  ></div>
+                </div>
+            
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-cyan-300 transition-all duration-300 transform group-hover:translate-y-[-2px]">
+                    {module.title}
+                  </h3>
+                  <p className="text-gray-300 group-hover:text-gray-100 transition-all duration-300 leading-relaxed">
+                    {module.description}
+                  </p>
                 </div>
                 
-                <div className="absolute -top-3 -right-3 w-8 h-8 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-12 z-10">
-                  {index + 1}
+                <div className="mt-6 relative">
+                  <div className="w-full h-1 bg-slate-600 rounded-full overflow-hidden">
+                    <div
+                      className={`h-full bg-gradient-to-r ${module.color} transform translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-1000 ease-out`}
+                    ></div>
+                  </div>
                 </div>
+              
+                <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-cyan-400/50 opacity-0 group-hover:opacity-100 transition-all duration-500 transform rotate-45"></div>
               </div>
-            ))}
+              
+              <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10 group-hover:ring-cyan-400/30 transition-all duration-500"></div>
+            </div>
+          </div>
+          
+          <div className="absolute -top-3 -right-3 w-8 h-8 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-12 z-10">
+            {index + 1}
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* Add this CSS to your stylesheet or in a <style> tag */}
+<style jsx>{`
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(50px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  .animate-slideInUp {
+    animation: slideInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+`}</style>
 
 
 {/* achievements */}
@@ -841,7 +864,7 @@ const modules = [
 
 
 
-    {/* Team*/}
+ {/* Team*/}
 <section id="team" className="py-20 px-8 bg-gradient-to-b from-slate-700 to-slate-800 relative overflow-hidden">
   <div className="absolute inset-0 pointer-events-none">
     <div className="neural-network"></div>
@@ -850,9 +873,14 @@ const modules = [
   <div className="max-w-7xl mx-auto relative z-10">
     <div
       className={`text-center mb-16 ${
-        visibleElements.has("team-title") ? "animate-flyInFromTop" : "opacity-0"
+        visibleElements.has("team-title") ? "animate-fadeInDown opacity-100" : "opacity-0 translate-y-[-30px]"
       }`}
       data-animate-id="team-title"
+      style={{
+        animationDuration: '800ms',
+        animationFillMode: 'both',
+        animationTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+      }}
     >
       <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">
         Our Team
@@ -866,27 +894,29 @@ const modules = [
     <div className="flex justify-center mb-16">
       <div
         className={`group bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-8 border border-slate-600 hover:border-cyan-400/50 transition-all duration-300 shadow-lg hover:shadow-2xl cursor-pointer max-w-md ${
-          visibleElements.has("team-ceo") ? "animate-flyInFromTop" : "opacity-0"
+          visibleElements.has("team-ceo") ? "animate-scaleIn opacity-100" : "opacity-0 scale-90 translate-y-8"
         } ${clickedElement === "team-ceo" ? "animate-flyTowards" : "hover:scale-105"}`}
         data-animate-id="team-ceo"
-        style={{ animationDelay: "0.2s" }}
+        style={{ 
+          animationDelay: visibleElements.has("team-ceo") ? "200ms" : "0ms",
+          animationDuration: '900ms',
+          animationFillMode: 'both',
+          animationTimingFunction: 'cubic-bezier(0.68, -0.55, 0.265, 1.55)'
+        }}
         onClick={() => handleFlyingClick("team-ceo")}
       >
         {/* CEO Photo/Avatar */}
-        <div className="aspect-square bg-gradient-to-br from-cyan-900/30 to-blue-900/30 rounded-xl border border-cyan-400/30 flex items-center justify-center mb-6 overflow-hidden w-32 h-32 mx-auto">
-{/* CEO Photo/Avatar */}
-<div className="aspect-square bg-gradient-to-br from-cyan-900/30 to-blue-900/30 rounded-xl border border-cyan-400/30 flex items-center justify-center mb-6 overflow-hidden w-32 h-32 mx-auto">
-  <img 
-    src={
-      teamMembers.find(m => m.role.toLowerCase().includes('ceo'))?.image || '/placeholder.svg'
-    } 
-    alt={
-      teamMembers.find(m => m.role.toLowerCase().includes('ceo'))?.name || 'CEO'
-    }
-    className="w-24 h-24 rounded-full object-cover"
-  />
-</div>
-
+        <div className="w-25 h-25 overflow-hidden mx-auto mb-4">
+          <img
+            src={
+              teamMembers.find(m => m.role.toLowerCase().includes('ceo'))?.image || '/placeholder.png'
+            }
+            alt={
+              teamMembers.find(m => m.role.toLowerCase().includes('ceo'))?.name || 'CEO'
+            }
+            className="w-full h-full object-cover"
+            onError={(e) => { e.target.src = '/placeholder.png'; }}
+          />
         </div>
         
         {/* CEO Details */}
@@ -912,23 +942,26 @@ const modules = [
           <div
             key={index}
             className={`group bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-6 border border-slate-600 hover:border-cyan-400/50 transition-all duration-300 shadow-lg hover:shadow-2xl cursor-pointer ${
-              visibleElements.has(`team-${index}`) ? "animate-flyInFromBottom" : "opacity-0"
+              visibleElements.has(`team-${index}`) ? "animate-waveReveal opacity-100" : "opacity-0 translate-y-16 scale-90 rotate-x-12"
             } ${clickedElement === `team-${index}` ? "animate-flyTowards" : "hover:scale-105"}`}
             data-animate-id={`team-${index}`}
-            style={{ animationDelay: `${(index + 1) * 0.1}s` }}
+            style={{ 
+              animationDelay: visibleElements.has(`team-${index}`) ? `${(index + 2) * 120}ms` : "0ms",
+              animationDuration: '800ms',
+              animationFillMode: 'both',
+              animationTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+            }}
             onClick={() => handleFlyingClick(`team-${index}`)}
           >
             {/* Team Member Photo/Avatar */}
-<div className="w-30 h-30 overflow-hidden mx-auto mb-4">
-  <img
-    src={member.image}
-    alt={member.name}
-    className="w-full h-full object-cover"
-    onError={(e) => { e.target.src = '/placeholder.png'; }}
-  />
-</div>
-
-
+            <div className="w-30 h-30 overflow-hidden mx-auto mb-4">
+              <img
+                src={member.image}
+                alt={member.name}
+                className="w-full h-full object-cover"
+                onError={(e) => { e.target.src = '/placeholder.png'; }}
+              />
+            </div>
             
             {/* Team Member Details */}
             <h3 className="text-xl font-semibold mb-2 group-hover:text-cyan-300 transition-colors">
@@ -943,7 +976,6 @@ const modules = [
     </div>
   </div>
 </section>
-
 
 
 
