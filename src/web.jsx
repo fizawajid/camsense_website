@@ -95,7 +95,7 @@ const AISecurityWebsite = () => {
       },
     )
 
-    //all elements with data-animate-id
+    
     const elements = document.querySelectorAll("[data-animate-id]")
     elements.forEach((el) => observerRef.current.observe(el))
 
@@ -114,7 +114,7 @@ const AISecurityWebsite = () => {
     setIsMenuOpen(false)
   }
 
-  //Flying animation handler
+  
   const handleFlyingClick = (elementId) => {
     setClickedElement(elementId)
     setTimeout(() => setClickedElement(null), 600)
@@ -505,11 +505,6 @@ const modules = [
       </section>
 
 
-
-
-
-
-      {/* Modules Section */}
      {/* Modules Section */}
 <section id="modules" className="relative py-20 px-8 bg-gradient-to-b from-slate-700 to-slate-600 overflow-hidden">
  
@@ -631,24 +626,6 @@ const modules = [
     </div>
   </div>
 </section>
-
-{/* Add this CSS to your stylesheet or in a <style> tag */}
-<style jsx>{`
-  @keyframes slideInUp {
-    from {
-      opacity: 0;
-      transform: translateY(50px) scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-  }
-  
-  .animate-slideInUp {
-    animation: slideInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-  }
-`}</style>
 
 
 {/* achievements */}
