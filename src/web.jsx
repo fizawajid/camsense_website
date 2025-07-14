@@ -219,7 +219,7 @@ const modules = [
         {
       name: "Bisma Wajid",
       role: "Business Manager",
-      image: "/bisma.jpg",
+      image: "/bisma2.jpg",
     },
         {
       name: "Mahad Malik",
@@ -840,23 +840,29 @@ const modules = [
 
 
 
-
- {/* Team*/}
-<section id="team" className="py-20 px-8 bg-gradient-to-b from-slate-700 to-slate-800 relative overflow-hidden">
+{/* Team */}
+<section
+  id="team"
+  className="py-20 px-8 bg-gradient-to-b from-slate-700 to-slate-800 relative overflow-hidden"
+>
   <div className="absolute inset-0 pointer-events-none">
     <div className="neural-network"></div>
     <div className="pulse-rings"></div>
   </div>
+
   <div className="max-w-7xl mx-auto relative z-10">
+    {/* Section Title */}
     <div
       className={`text-center mb-16 ${
-        visibleElements.has("team-title") ? "animate-fadeInDown opacity-100" : "opacity-0 translate-y-[-30px]"
+        visibleElements.has("team-title")
+          ? "animate-fadeInDown opacity-100"
+          : "opacity-0 translate-y-[-30px]"
       }`}
       data-animate-id="team-title"
       style={{
-        animationDuration: '800ms',
-        animationFillMode: 'both',
-        animationTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+        animationDuration: "800ms",
+        animationFillMode: "both",
+        animationTimingFunction: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
       }}
     >
       <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">
@@ -867,84 +873,113 @@ const modules = [
       </p>
     </div>
 
-    {/* CEO Section - Top Center */}
-    <div className="flex justify-center mb-16">
-      <div
-        className={`group bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-8 border border-slate-600 hover:border-cyan-400/50 transition-all duration-300 shadow-lg hover:shadow-2xl cursor-pointer max-w-md ${
-          visibleElements.has("team-ceo") ? "animate-scaleIn opacity-100" : "opacity-0 scale-90 translate-y-8"
-        } ${clickedElement === "team-ceo" ? "animate-flyTowards" : "hover:scale-105"}`}
-        data-animate-id="team-ceo"
-        style={{ 
-          animationDelay: visibleElements.has("team-ceo") ? "200ms" : "0ms",
-          animationDuration: '900ms',
-          animationFillMode: 'both',
-          animationTimingFunction: 'cubic-bezier(0.68, -0.55, 0.265, 1.55)'
-        }}
-        onClick={() => handleFlyingClick("team-ceo")}
-      >
-        {/* CEO Photo/Avatar */}
-        <div className="w-25 h-25 overflow-hidden mx-auto mb-4">
-          <img
-            src={
-              teamMembers.find(m => m.role.toLowerCase().includes('ceo'))?.image || '/placeholder.png'
-            }
-            alt={
-              teamMembers.find(m => m.role.toLowerCase().includes('ceo'))?.name || 'CEO'
-            }
-            className="w-full h-full object-cover"
-            onError={(e) => { e.target.src = '/placeholder.png'; }}
-          />
-        </div>
-        
-        {/* CEO Details */}
-        <div className="text-center">
-          <h3 className="text-2xl font-bold mb-2 group-hover:text-cyan-300 transition-colors">
-            {teamMembers.find(member => member.role.toLowerCase().includes('ceo'))?.name || 'CEO Name'}
-          </h3>
-          <p className="text-cyan-300 font-medium mb-4 text-lg">
-            {teamMembers.find(member => member.role.toLowerCase().includes('ceo'))?.role || 'Chief Executive Officer'}
-          </p>
-          <p className="text-gray-300 group-hover:text-gray-200 transition-colors">
-            {teamMembers.find(member => member.role.toLowerCase().includes('ceo'))?.description}
-          </p>
-        </div>
-      </div>
+    {/* Founders Section */}
+    <div className="flex flex-col md:flex-row justify-center gap-8 mb-16">
+      {teamMembers
+        .filter((member) =>
+          member.role.toLowerCase().includes("founder")
+        )
+        .map((member, index) => (
+          <div
+            key={index}
+            className={`group bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-8 border border-slate-600 hover:border-cyan-400/50 transition-all duration-300 shadow-lg hover:shadow-2xl cursor-pointer max-w-md ${
+              visibleElements.has(`founder-${index}`)
+                ? "animate-scaleIn opacity-100"
+                : "opacity-0 scale-90 translate-y-8"
+            } ${
+              clickedElement === `founder-${index}`
+                ? "animate-flyTowards"
+                : "hover:scale-105"
+            }`}
+            data-animate-id={`founder-${index}`}
+            style={{
+              animationDelay: visibleElements.has(`founder-${index}`)
+                ? `${index * 100}ms`
+                : "0ms",
+              animationDuration: "900ms",
+              animationFillMode: "both",
+              animationTimingFunction:
+                "cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+            }}
+            onClick={() => handleFlyingClick(`founder-${index}`)}
+          >
+            {/* Founder Photo */}
+            <div className="w-25 h-25 overflow-hidden mx-auto mb-4">
+              <img
+                src={member.image || "/placeholder.png"}
+                alt={member.name || "Founder"}
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  e.target.src = "/placeholder.png";
+                }}
+              />
+            </div>
+
+            {/* Founder Details */}
+            <div className="text-center">
+              <h3 className="text-2xl font-bold mb-2 group-hover:text-cyan-300 transition-colors">
+                {member.name || "Name"}
+              </h3>
+              <p className="text-cyan-300 font-medium mb-4 text-lg">
+                {member.role || "Founder"}
+              </p>
+              <p className="text-gray-300 group-hover:text-gray-200 transition-colors">
+                {member.description}
+              </p>
+            </div>
+          </div>
+        ))}
     </div>
 
-    {/* Rest of Team Members */}
+    {/* Other Team Members */}
     <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
       {teamMembers
-        .filter(member => !member.role.toLowerCase().includes('ceo'))
+        .filter(
+          (member) => !member.role.toLowerCase().includes("founder")
+        )
         .map((member, index) => (
           <div
             key={index}
             className={`group bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-6 border border-slate-600 hover:border-cyan-400/50 transition-all duration-300 shadow-lg hover:shadow-2xl cursor-pointer ${
-              visibleElements.has(`team-${index}`) ? "animate-waveReveal opacity-100" : "opacity-0 translate-y-16 scale-90 rotate-x-12"
-            } ${clickedElement === `team-${index}` ? "animate-flyTowards" : "hover:scale-105"}`}
+              visibleElements.has(`team-${index}`)
+                ? "animate-waveReveal opacity-100"
+                : "opacity-0 translate-y-16 scale-90 rotate-x-12"
+            } ${
+              clickedElement === `team-${index}`
+                ? "animate-flyTowards"
+                : "hover:scale-105"
+            }`}
             data-animate-id={`team-${index}`}
-            style={{ 
-              animationDelay: visibleElements.has(`team-${index}`) ? `${(index + 2) * 120}ms` : "0ms",
-              animationDuration: '800ms',
-              animationFillMode: 'both',
-              animationTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+            style={{
+              animationDelay: visibleElements.has(`team-${index}`)
+                ? `${(index + 2) * 120}ms`
+                : "0ms",
+              animationDuration: "800ms",
+              animationFillMode: "both",
+              animationTimingFunction:
+                "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
             }}
             onClick={() => handleFlyingClick(`team-${index}`)}
           >
-            {/* Team Member Photo/Avatar */}
+            {/* Team Member Photo */}
             <div className="w-30 h-30 overflow-hidden mx-auto mb-4">
               <img
-                src={member.image}
-                alt={member.name}
+                src={member.image || "/placeholder.png"}
+                alt={member.name || "Team Member"}
                 className="w-full h-full object-cover"
-                onError={(e) => { e.target.src = '/placeholder.png'; }}
+                onError={(e) => {
+                  e.target.src = "/placeholder.png";
+                }}
               />
             </div>
-            
+
             {/* Team Member Details */}
             <h3 className="text-xl font-semibold mb-2 group-hover:text-cyan-300 transition-colors">
               {member.name}
             </h3>
-            <p className="text-cyan-300 font-medium mb-3">{member.role}</p>
+            <p className="text-cyan-300 font-medium mb-3">
+              {member.role}
+            </p>
             <p className="text-gray-300 text-sm group-hover:text-gray-200 transition-colors">
               {member.description}
             </p>
@@ -953,6 +988,7 @@ const modules = [
     </div>
   </div>
 </section>
+
 
 
 
