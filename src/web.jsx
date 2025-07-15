@@ -194,7 +194,7 @@ const modules = [
      {
       name: "Muhammad Abdullah Baig",
       role: "Co-Founder",
-      image: "/female2.png",
+      image: "/co.jpg",
     },
     {
       name: "Eshaal Rasheed",
@@ -461,45 +461,33 @@ const modules = [
 
 
             {/* NEW LIVE DETECTION FEED */}
-            <div
-              className={`relative ${
-                visibleElements.has("overview-preview") ? "animate-flyInFromRight" : "opacity-0"
-              }`}
-              data-animate-id="overview-preview"
-            >
-              <div
-                className={`bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-8 border border-slate-600 shadow-2xl cursor-pointer transition-all duration-300 ${
-                  clickedElement === "preview-card" ? "animate-flyTowards" : "hover:scale-105"
-                }`}
-                onClick={() => handleFlyingClick("preview-card")}
-              >
-                <div className="space-y-4">
-                  <h3 className="text-xl text-cyan-300 font-semibold">Live Detection Feed</h3>
-                  <div className="bg-slate-700/80 rounded-lg p-4 border border-cyan-400/20 shadow">
-                    <ul className="space-y-2 text-sm text-gray-300 max-h-48 overflow-y-auto">
-                      <li>
-                        12:41 PM — <span className="text-orange-400">Suspicious Movement detected</span>
-                      </li>
-                      <li>
-                        12:32 PM — <span className="text-green-400">All clear</span>
-                      </li>
-                      <li>
-                        12:20 PM — <span className="text-red-400">Intrusion attempt</span>
-                      </li>
-                      <li>
-                        12:05 PM — <span className="text-green-400">All clear</span>
-                      </li>
-                      <li>
-                        11:45 AM — <span className="text-orange-400">Suspicious Activity</span>
-                      </li>
-                      <li>
-                        11:50 AM — <span className="text-green-400">All clear</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+<div
+  className={`relative ${
+    visibleElements.has("overview-preview") ? "animate-flyInFromRight" : "opacity-0"
+  }`}
+  data-animate-id="overview-preview"
+>
+  <div
+    className={`bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-8 border border-slate-600 shadow-2xl cursor-pointer transition-all duration-300 ${
+      clickedElement === "preview-card" ? "animate-flyTowards" : "hover:scale-105"
+    }`}
+    onClick={() => handleFlyingClick("preview-card")}
+  >
+    <div className="space-y-4">
+      <h3 className="text-xl text-cyan-300 font-semibold">Live Detection Feed</h3>
+
+      <div className="rounded-lg p-4 shadow flex justify-center">
+        <img
+          src="/public/new-demo-hq.gif"
+          alt="Live Detection Feed"
+          className="rounded-lg max-h-78"
+        />
+      </div>
+
+    </div>
+  </div>
+</div>
+
           </div>
         </div>
       </section>
