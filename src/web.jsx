@@ -477,11 +477,21 @@ const modules = [
       <h3 className="text-xl text-cyan-300 font-semibold">Live Detection Feed</h3>
 
       <div className="rounded-lg p-4 shadow flex justify-center">
-        <img
-          src="/public/new-demo-hq.gif"
+      {/* <img
+          src="/public/new-demo-hq.mp4"
           alt="Live Detection Feed"
           className="rounded-lg max-h-78"
-        />
+        /> */}
+        <video
+  src="https://res.cloudinary.com/drobocxkg/video/upload/v1752909615/gif_e7a9if.mp4"
+  autoPlay
+  loop
+  muted
+  playsInline
+  className="rounded-lg max-h-78"
+/>
+
+        
       </div>
 
     </div>
