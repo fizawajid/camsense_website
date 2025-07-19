@@ -219,7 +219,7 @@ const modules = [
         {
       name: "Bisma Wajid",
       role: "Business Manager",
-      image: "/bisma2.jpg",
+      image: "/bisma.jpg",
     },
         {
       name: "Mahad Malik",
@@ -1109,7 +1109,7 @@ const modules = [
                 icon: Mail,
                 title: "Email Us",
                 primary: "muhammadsafiullah@gmail.com",
-                secondary: "secondary@email.com",
+                secondary: "hafizmuhammadsafiullah@gmail.com",
                 color: "from-cyan-400 to-blue-500",
               },
               {
