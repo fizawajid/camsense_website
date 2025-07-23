@@ -203,7 +203,7 @@ const modules = [
     },
     {
       name: "Fiza Wajid",
-      role: "Software Enginner",
+      role: "Software Engineer",
       image: "/female2.png",
     },
     {
@@ -213,7 +213,7 @@ const modules = [
     },
         {
       name: "Areeba Waqar",
-      role: "Software Enginner",
+      role: "Software Engineer",
       image: "/areeba.jpg",
     },
         {
@@ -223,7 +223,7 @@ const modules = [
     },
         {
       name: "Mahad Malik",
-      role: "Software Enginner",
+      role: "Software Engineer",
       image: "/mahad.jpg",
     },
     
