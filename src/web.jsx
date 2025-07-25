@@ -226,6 +226,21 @@ const modules = [
       role: "Software Engineer",
       image: "/mahad.jpg",
     },
+            {
+      name: "Hassan bin Saqib",
+      role: "AI Engineer",
+      image: "/hasan.jpg",
+    },
+            {
+      name: "Kamran Ahmed",
+      role: "AI Engineer",
+      image: "/kamran.jpg",
+    },
+                {
+      name: "Moez ul Haq",
+      role: "AI Engineer",
+      image: "/moez.jpg",
+    }
     
   ]
 
