@@ -239,7 +239,7 @@ const modules = [
                 {
       name: "Moez ul Haq",
       role: "AI Engineer",
-      image: "/moez.jpg",
+      image: "/moiz.jpg",
     }
     
   ]
