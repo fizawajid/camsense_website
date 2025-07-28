@@ -202,24 +202,24 @@ const modules = [
       image: "/eshaal.jpg",
     },
     {
-      name: "Fiza Wajid",
-      role: "Software Engineer",
-      image: "/female2.png",
-    },
-    {
       name: "Ghulaam Fatima",
       role: "Graphic Designer",
       image: "/fatima.jpg",
+    },
+            {
+      name: "Bisma Wajid",
+      role: "Business Manager",
+      image: "/bisma.jpg",
+    },
+        {
+      name: "Fiza Wajid",
+      role: "Software Engineer",
+      image: "/female2.png",
     },
         {
       name: "Areeba Waqar",
       role: "Software Engineer",
       image: "/areeba.jpg",
-    },
-        {
-      name: "Bisma Wajid",
-      role: "Business Manager",
-      image: "/bisma.jpg",
     },
         {
       name: "Mahad Malik",
