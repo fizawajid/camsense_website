@@ -28,7 +28,7 @@ const AISecurityWebsite = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "product-overview", "modules", "achievements", "goals", "team", "location", "contact"]
+      const sections = ["home", "product-overview", "modules", "achievements", "proud-moments", "goals", "team", "location", "contact"]
       const scrollPosition = window.scrollY + window.innerHeight / 3
       
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -58,7 +58,7 @@ const AISecurityWebsite = () => {
   //scroll for active section
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "modules", "achievements", "goals", "team", "location", "contact"]
+      const sections = ["home", "modules", "achievements","proud-moments", "goals", "team", "location", "contact"]
       // const scrollPosition = window.scrollY + 100
       const scrollPosition = window.scrollY + window.innerHeight / 2
       for (const section of sections) {
@@ -123,7 +123,8 @@ const AISecurityWebsite = () => {
   const navItems = [
     { id: "home", label: "Home" },
     { id: "modules", label: "Modules" },
-    { id: "achievements", label: "Achieve" },
+    { id: "achievements", label: "Achievements" },
+    { id: "proud-moments", label: "Accomplishments" },
     { id: "goals", label: "Goals" },
     { id: "team", label: "Team" },
     { id: "location", label: "Location" },
@@ -168,6 +169,33 @@ const modules = [
     color: "from-purple-400 to-pink-400",
   },
 ];
+
+
+// Add these arrays after your existing arrays (around line 134, after the teamMembers array)
+
+const proudMoments = [
+    {
+    title: "Hosted Mr. Rafique Ahmad Buriro (Additional Secretary MoIT) at NICAT, showcasing Camsense’s AI security tech",
+    image: "/MIT.png", 
+    date: "June, 2025"
+  },
+    {
+    title: "Nayab Babar (PSF CIO) and investors visited NICAT, reconnecting to discuss Camsense’s AI-driven vision and growth journey",
+    image: "/IMG_6705.png",
+    date: "July, 2025"
+  },
+  {
+    title: "Met Kamil Aziz (Zayn VC) at NICAT, discussing Camsense’s traction, growth vision, and fundraising opportunities.",
+    image: "/IMG_6635.png",
+    date: "July, 2025"
+  },
+  {
+    title: "Signed an MoU with NICAT, marking the start of a strong partnership to redefine workplace security.",
+    image: "/NICAT.JPG",
+    date: "July, 2025"
+  }
+];
+
 
 
   const goals = [
@@ -748,8 +776,6 @@ const modules = [
     className="max-w-full max-h-full object-contain opacity-100 p-2"
   />
 </div>
-
-
 <div className="w-40 h-24 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/30">
   <img 
     src="/image/nicat.png" 
@@ -757,14 +783,105 @@ const modules = [
     className="max-w-full max-h-full object-contain opacity-100 p-2"
   />
 </div>
-
 </div>
-
         </div>
       </div>
     </div>
   </div>
 </section>
+
+
+{/* PROUD MOMENTS */}
+<section id="proud-moments" className="py-20 px-4 min-h-[60vh] bg-gradient-to-b from-slate-700 to-slate-800 relative overflow-hidden">
+  <div className="absolute inset-0 pointer-events-none">
+    <div className="data-stream"></div>
+    <div className="security-grid"></div>
+  </div>
+
+  <div className="max-w-7xl mx-auto relative z-10">
+    {/* Section Header */}
+    <div
+      className={`text-center mb-16 ${
+        visibleElements.has("proud-moments-title") ? "animate-flyInFromTop" : "opacity-0"
+      }`}
+      data-animate-id="proud-moments-title"
+    >
+      <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">
+        Proud Moments
+      </h2>
+      <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+        Capturing the memories that define our journey and celebrate our achievements
+      </p>
+    </div>
+
+    {/* Photo Gallery Grid */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 place-items-center">
+      {proudMoments.map((moment, index) => (
+        <div
+          key={index}
+          className={`group relative bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-cyan-400/50 transition-all duration-500 shadow-xl hover:shadow-2xl hover:-translate-y-2 ${
+            visibleElements.has(`moment-${index}`)
+              ? "animate-scaleIn opacity-100"
+              : "opacity-0 scale-90 translate-y-8"
+          } ${
+            clickedElement === `moment-${index}`
+              ? "animate-flyTowards"
+              : ""
+          }`}
+          data-animate-id={`moment-${index}`}
+          style={{
+            animationDelay: visibleElements.has(`moment-${index}`)
+              ? `${index * 120}ms`
+              : "0ms",
+            animationDuration: "800ms",
+            animationFillMode: "both",
+            animationTimingFunction: "cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+          }}
+          onClick={() => handleFlyingClick(`moment-${index}`)}
+        >
+          {/* Image Container */}
+          <div className="aspect-video overflow-hidden bg-slate-900/50">
+            <div className="w-full h-full overflow-hidden bg-slate-900/50 flex items-center justify-center">
+  <img
+    src={moment.image || "/placeholder.png"}
+    alt={moment.caption || "Proud moment"}
+    className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-105"
+    onError={(e) => { e.target.src = "/placeholder.png"; }}
+  />
+</div>
+
+            
+            {/* Overlay gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+
+          {/* Caption Container */}
+          <div className="p-6">
+            <div className="text-center mb-3">
+              {/* <div className="flex-1"> */}
+                <h3 className="text-lg font-semibold text-white group-hover:text-cyan-300 transition-colors mb-1">
+                  {moment.title || `Moment ${index + 1}`}
+                </h3>
+                {moment.date && (
+                  <span className="text-sm text-cyan-400 font-medium">
+                    {moment.date}
+                  </span>
+                )}
+              {/* </div> */}
+            </div>
+          </div>
+
+          {/* Decorative corner */}
+          <div className="absolute top-4 right-4 w-3 h-3 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+
+
 
 
 
