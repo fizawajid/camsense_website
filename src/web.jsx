@@ -343,7 +343,7 @@ const modules = [
         >
           <div className="mb-8">
             <div
-              className={`inline-flex items-center gap-2 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 border border-cyan-400/40 rounded-full px-6 py-2 mb-6 backdrop-blur-sm animate-glow cursor-pointer transition-all duration-300 ${
+              className={`inline-flex items-center gap-2 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 border border-cyan-400/40 rounded-full px-6 py-2 mb-6 backdrop-blur-sm animate-glow transition-all duration-300 ${
                 clickedElement === "badge" ? "animate-flyTowards" : "hover:scale-110"
               }`}
               onClick={() => handleFlyingClick("badge")}
@@ -396,7 +396,7 @@ const modules = [
             ].map((stat, index) => (
               <div
                 key={index}
-                className={`text-center group cursor-pointer transition-all duration-300 ${
+                className={`text-center group transition-all duration-300 ${
                   clickedElement === `stat-${index}` ? "animate-flyTowards" : "hover:scale-110"
                 }`}
                 onClick={() => handleFlyingClick(`stat-${index}`)}
@@ -462,7 +462,7 @@ const modules = [
               ].map((item, index) => (
                 <div
                   key={index}
-                  className={`flex items-start gap-4 group cursor-pointer transition-all duration-300 ${
+                  className={`flex items-start gap-4 group transition-all duration-300 ${
                     visibleElements.has(`overview-feature-${index}`) ? "animate-flyInFromLeft" : "opacity-0"
                   } ${clickedElement === `feature-${index}` ? "animate-flyTowards" : "hover:scale-105"}`}
                   data-animate-id={`overview-feature-${index}`}
@@ -493,7 +493,7 @@ const modules = [
   data-animate-id="overview-preview"
 >
   <div
-    className={`bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-8 border border-slate-600 shadow-2xl cursor-pointer transition-all duration-300 ${
+    className={`bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-8 border border-slate-600 shadow-2xl transition-all duration-300 ${
       clickedElement === "preview-card" ? "animate-flyTowards" : "hover:scale-105"
     }`}
     onClick={() => handleFlyingClick("preview-card")}
@@ -554,7 +554,7 @@ const modules = [
       {modules.map((module, index) => (
         <div
           key={index}
-          className={`relative group cursor-pointer transition-all duration-700 transform-gpu perspective-1000 ${
+          className={`relative group transition-all duration-700 transform-gpu perspective-1000 ${
             visibleElements.has(`module-${index}`) 
               ? "animate-slideInUp opacity-100" 
               : "opacity-0 translate-y-12"
@@ -691,7 +691,7 @@ const modules = [
           {achievements.map((achievement, index) => (
             <div
               key={index}
-              className={`relative mb-8 pl-8 group cursor-pointer opacity-0 ${
+              className={`relative mb-8 pl-8 group opacity-0 ${
                 visibleElements.has(`achievement-${index}`)
                   ? "animate-flyInFromLeft"
                   : ""
@@ -833,7 +833,7 @@ const modules = [
               : {}),
           }}
         >
-          <div className="group cursor-pointer">
+          {/* <div className="group cursor-pointer"> */}
             <div className="relative bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-lg border border-slate-600/50 rounded-2xl p-6 shadow-2xl hover:shadow-cyan-500/20 transition-all duration-500 hover:scale-105 hover:rotate-1">
               <div className="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
                 <span className="text-white font-bold text-sm">{index + 1}</span>
@@ -847,7 +847,7 @@ const modules = [
                 </p>
               </div>
             </div>
-          </div>
+          {/* </div> */}
         </div>
       );
     })}
@@ -896,7 +896,7 @@ const modules = [
         .map((member, index) => (
           <div
             key={index}
-            className={` rounded-2xl p-8 border border-slate-700 hover:border-cyan-400/50 shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 cursor-pointer max-w-md text-center ${
+            className={` rounded-2xl p-8 border border-slate-700 hover:border-cyan-400/50 shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 max-w-md text-center ${
               visibleElements.has(`founder-${index}`)
                 ? "animate-scaleIn opacity-100"
                 : "opacity-0 scale-90 translate-y-8"
@@ -1016,7 +1016,7 @@ const modules = [
                   ].map((item, index) => (
                     <div
                       key={index}
-                      className={`flex items-start gap-4 group cursor-pointer transition-all duration-300 ${
+                      className={`flex items-start gap-4 group transition-all duration-300 ${
                         clickedElement === `location-${index}` ? "animate-flyTowards" : "hover:scale-105"
                       }`}
                       onClick={() => handleFlyingClick(`location-${index}`)}
@@ -1106,7 +1106,7 @@ const modules = [
             ].map((contact, index) => (
               <div
                 key={index}
-                className={`group bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-8 border border-slate-600 hover:border-cyan-400/50 transition-all duration-300 shadow-lg hover:shadow-2xl cursor-pointer ${
+                className={`group bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-8 border border-slate-600 hover:border-cyan-400/50 transition-all duration-300 shadow-lg hover:shadow-2xl ${
                   visibleElements.has(`contact-${index}`) ? "animate-flyInFromBottom" : "opacity-0"
                 } ${clickedElement === `contact-${index}` ? "animate-flyTowards" : "hover:scale-105"}`}
                 data-animate-id={`contact-${index}`}
