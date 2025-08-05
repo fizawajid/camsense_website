@@ -206,6 +206,11 @@ const modules = [
       role: "Graphic Designer",
       image: "/fatima.jpg",
     },
+    {
+      name: "Sidra Younas",
+      role: "Graphic Designer",
+      image: "/sidra.jpg",
+    },
             {
       name: "Bisma Wajid",
       role: "Business Manager",
@@ -237,10 +242,15 @@ const modules = [
       image: "/kamran.jpg",
     },
                 {
-      name: "Moez ul Haq",
+      name: "Iffah Naveed",
       role: "AI Engineer",
-      image: "/moiz.jpg",
-    }
+      image: "/iffah.jpg",
+    },
+                {
+      name: "Muhammad Ahsan",
+      role: "AI Engineer",
+      image: "/ahsan.jpg",
+    },
     
   ]
 
