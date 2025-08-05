@@ -536,7 +536,8 @@ const proudMoments = [
           className="rounded-lg max-h-78"
         /> */}
         <video
-  src="https://res.cloudinary.com/drobocxkg/video/upload/v1752909615/gif_e7a9if.mp4"
+  src="https://res.cloudinary.com/drobocxkg/video/upload/v1754411116/demo-video1_smdxpa.mp4"
+  
   autoPlay
   loop
   muted
