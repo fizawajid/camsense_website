@@ -859,7 +859,7 @@ const modules = [
 </section>
 
 
-   
+   {/* TEAM */}
 <section
   id="team"
   className="py-24 px-8 bg-gradient-to-b from-slate-800 to-slate-900 relative overflow-hidden"
@@ -905,7 +905,7 @@ const modules = [
             style={{ animationDelay: `${index * 120}ms` }}
             onClick={() => handleFlyingClick(`founder-${index}`)}
           >
-            <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden ring-4 ring-cyan-400/30">
+            <div className="w-36 h-36 mx-auto mb-6 rounded-full overflow-hidden ring-4 ring-cyan-400/30">
               <img
                 src={member.image || "/placeholder.png"}
                 alt={member.name || "Founder"}
@@ -941,7 +941,7 @@ const modules = [
             style={{ animationDelay: `${(index + 2) * 120}ms` }}
             onClick={() => handleFlyingClick(`team-${index}`)}
           >
-            <div className="w-28 h-28 mx-auto mb-4 rounded-full overflow-hidden ring-2 ring-cyan-300/20">
+            <div className="w-32 h-36 mx-auto mb-4 rounded-full overflow-hidden ring-2 ring-cyan-300/20">
               <img
                 src={member.image || "/placeholder.png"}
                 alt={member.name || "Team Member"}
