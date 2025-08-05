@@ -896,7 +896,7 @@ const modules = [
         .map((member, index) => (
           <div
             key={index}
-            className={`group bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-slate-700 hover:border-cyan-400/50 shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 cursor-pointer max-w-md text-center ${
+            className={` rounded-2xl p-8 border border-slate-700 hover:border-cyan-400/50 shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 cursor-pointer max-w-md text-center ${
               visibleElements.has(`founder-${index}`)
                 ? "animate-scaleIn opacity-100"
                 : "opacity-0 scale-90 translate-y-8"
@@ -931,8 +931,9 @@ const modules = [
         .map((member, index) => (
           <div
             key={index}
-            className={`group bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-slate-700 hover:border-cyan-400/50 shadow-md hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 cursor-pointer text-center ${
-              visibleElements.has(`team-${index}`)
+            // className={`group bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-slate-700 hover:border-cyan-400/50 shadow-md hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 cursor-pointer text-center ${
+            className={` rounded-2xl p-6 border border-slate-700 hover:border-cyan-400/50 shadow-md hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 text-center ${  
+            visibleElements.has(`team-${index}`)
                 ? "animate-waveReveal opacity-100"
                 : "opacity-0 translate-y-12 scale-90"
             } ${clickedElement === `team-${index}` ? "animate-flyTowards" : "hover:scale-105"}`}
