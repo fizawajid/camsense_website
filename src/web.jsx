@@ -472,7 +472,7 @@ const proudMoments = [
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
+        <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
           <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center">
             <div className="w-1 h-3 bg-cyan-300 rounded-full animate-bounce mt-2"></div>
           </div>
