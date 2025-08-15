@@ -2,7 +2,11 @@
 import { useState, useEffect, useRef } from "react"
 import "./style.css"
 import { Shield, Eye, Zap, BarChart3, MapPin, Target, Camera, AlertTriangle, Brain, CheckCircle, ArrowRight, Play, Pause, Menu, X, Mail, Phone, Users, Linkedin, Github, Twitter } from 'lucide-react'
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import {
   ParkingSquare,
   ShoppingCart,
@@ -177,6 +181,11 @@ const proudMoments = [
     {
     title: "Hosted Mr. Rafique Ahmad Buriro (Additional Secretary MoIT) at NICAT, showcasing Camsense’s AI security tech",
     image: "/MIT.png", 
+    date: "June, 2025"
+  },
+      {
+    title: "Entered a strategic MoU with Family Cash and Carry to set new benchmarks in workplace security.",
+    image: "/family-cash.jpg",
     date: "June, 2025"
   },
     {
@@ -819,69 +828,73 @@ const proudMoments = [
         Capturing the memories that define our journey and celebrate our achievements
       </p>
     </div>
-
-    {/* Photo Gallery Grid */}
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 place-items-center">
-      {proudMoments.map((moment, index) => (
-        <div
-          key={index}
-          className={`group relative bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-cyan-400/50 transition-all duration-500 shadow-xl hover:shadow-2xl hover:-translate-y-2 ${
-            visibleElements.has(`moment-${index}`)
-              ? "animate-scaleIn opacity-100"
-              : "opacity-0 scale-90 translate-y-8"
-          } ${
-            clickedElement === `moment-${index}`
-              ? "animate-flyTowards"
-              : ""
-          }`}
-          data-animate-id={`moment-${index}`}
-          style={{
-            animationDelay: visibleElements.has(`moment-${index}`)
-              ? `${index * 120}ms`
-              : "0ms",
-            animationDuration: "800ms",
-            animationFillMode: "both",
-            animationTimingFunction: "cubic-bezier(0.68, -0.55, 0.265, 1.55)",
-          }}
-          onClick={() => handleFlyingClick(`moment-${index}`)}
-        >
-          {/* Image Container */}
-          <div className="aspect-video overflow-hidden bg-slate-900/50">
-            <div className="w-full h-full overflow-hidden bg-slate-900/50 flex items-center justify-center">
-  <img
-    src={moment.image || "/placeholder.png"}
-    alt={moment.caption || "Proud moment"}
-    className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-105"
-    onError={(e) => { e.target.src = "/placeholder.png"; }}
-  />
-</div>
-
-            
-            {/* Overlay gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </div>
-
-          {/* Caption Container */}
-          <div className="p-6">
-            <div className="text-center mb-3">
-              {/* <div className="flex-1"> */}
-                <h3 className="text-lg font-semibold text-white group-hover:text-cyan-300 transition-colors mb-1">
-                  {moment.title || `Moment ${index + 1}`}
-                </h3>
-                {moment.date && (
-                  <span className="text-sm text-cyan-400 font-medium">
-                    {moment.date}
-                  </span>
-                )}
-              {/* </div> */}
-            </div>
-          </div>
-
-          {/* Decorative corner */}
-          <div className="absolute top-4 right-4 w-3 h-3 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+    <Swiper
+  modules={[Navigation, Pagination, Autoplay]}
+  spaceBetween={20}
+  slidesPerView={1}
+  navigation
+  pagination={{ clickable: true }}
+  autoplay={{ delay: 3000 }}
+  loop={true}
+  breakpoints={{
+    640: { slidesPerView: 2 },
+    1024: { slidesPerView: 3 },
+  }}
+>
+  {proudMoments.map((moment, index) => (
+    <SwiperSlide key={index}>
+      <div
+        className={`group relative bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-cyan-400/50 transition-all duration-500 shadow-xl hover:shadow-2xl hover:-translate-y-2 ${
+          visibleElements.has(`moment-${index}`)
+            ? "animate-scaleIn opacity-100"
+            : "opacity-0 scale-90 translate-y-8"
+        } ${
+          clickedElement === `moment-${index}`
+            ? "animate-flyTowards"
+            : ""
+        }`}
+        data-animate-id={`moment-${index}`}
+        style={{
+          animationDelay: visibleElements.has(`moment-${index}`)
+            ? `${index * 120}ms`
+            : "0ms",
+          animationDuration: "800ms",
+          animationFillMode: "both",
+          animationTimingFunction: "cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+        }}
+        onClick={() => handleFlyingClick(`moment-${index}`)}
+      >
+        {/* Image Container */}
+        <div className="aspect-video overflow-hidden bg-slate-900/50 flex items-center justify-center">
+          <img
+            src={moment.image || "/placeholder.png"}
+            alt={moment.caption || "Proud moment"}
+            className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-105"
+            onError={(e) => { e.target.src = "/placeholder.png"; }}
+          />
+          {/* Overlay gradient */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
-      ))}
-    </div>
+
+        {/* Caption Container */}
+        <div className="p-6 text-center">
+          <h3 className="text-lg font-semibold text-white group-hover:text-cyan-300 transition-colors mb-1">
+            {moment.title || `Moment ${index + 1}`}
+          </h3>
+          {moment.date && (
+            <span className="text-sm text-cyan-400 font-medium">
+              {moment.date}
+            </span>
+          )}
+        </div>
+
+        {/* Decorative corner */}
+        <div className="absolute top-4 right-4 w-3 h-3 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+      </div>
+    </SwiperSlide>
+  ))}
+</Swiper>
+
 
   </div>
 </section>
