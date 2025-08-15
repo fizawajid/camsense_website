@@ -4,13 +4,13 @@ import "./style.css"
 import { Shield, Eye, Zap, BarChart3, MapPin, Target, Camera, AlertTriangle, Brain, CheckCircle, ArrowRight, Play, Pause, Menu, X, Mail, Phone, Users, Linkedin, Github, Twitter } from 'lucide-react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
+  import { ChevronDown, ChevronUp, Crown, Code, Briefcase, Palette} from 'lucide-react';
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import {
   ParkingSquare,
   ShoppingCart,
-  Briefcase,
   GraduationCap,
   Home,
 } from "lucide-react";
@@ -27,8 +27,36 @@ const AISecurityWebsite = () => {
   const [visibleElements, setVisibleElements] = useState(new Set())
 
 
+
+  const [expandedDepartment, setExpandedDepartment] = useState('leadership');
+
+
   const observerRef = useRef(null)
   const elementsRef = useRef(new Map())
+
+
+    useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('data-animate-id');
+            if (id) {
+              setVisibleElements(prev => new Set([...prev, id]));
+            }
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '50px' }
+    );
+
+    document.querySelectorAll('[data-animate-id]').forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -118,11 +146,77 @@ const AISecurityWebsite = () => {
     setIsMenuOpen(false)
   }
 
+
+
+
+  // Sample team data with your departments
+  const teamMembers = [
+    // Leadership
+    { name: "Hafiz Muhammad Safiullah", role: "CEO & Founder", department: "leadership", image: "/ceo.jpg"},
+    { name: "Muhammad Abdullah Baig", role: "Co-Founder", department: "leadership", image: "/co.jpg" },
   
-  const handleFlyingClick = (elementId) => {
-    setClickedElement(elementId)
-    setTimeout(() => setClickedElement(null), 600)
-  }
+    // Business Management
+    { name: "Eshaal Rasheed", role: "IT Coordinator", department: "business management", image: "/eshaal.jpg" },
+    { name: "Bisma Wajid", role: "Business Manager", department: "business management", image: "/bisma.jpg"},
+
+    // Software Engineering
+    { name: "Fiza Wajid", role: "Full-Stack & Cloud Engineer", department: "software engineering", image: "/female2.png"},
+    { name: "Mahad Malik", role: "Software Engineer", department: "software engineering", image: "/mahad.jpg"},
+    { name: "Areeba Waqar", role: "Software Engineer", department: "software engineering", image: "/areeba.jpg"},
+
+    // AI Engineering
+    { name: "Muhammad Ahsan", role: "ML Engineer", department: "ai engineering", image: "/ahsan.jpg"},
+    { name: "Simran Fatima", role: "ML Engineer", department: "ai engineering", image: "/female2.png"},
+    { name: "Kamran Ahmed", role: "ML Engineer", department: "ai engineering", image: "/kamran.jpg" },
+    { name: "Iffah Naveed", role: "ML Engineer", department: "ai engineering", image: "/iffah.jpg"},
+    { name: "Hassan bin Saqib", role: "ML Engineer", department: "ai engineering", image: "/hasan.jpg"},
+    
+
+    // Graphic Designers
+    { name: "Ghulaam Fatima", role: "Creative Designer", department: "graphic designers", image: "/fatima.jpg"},
+    { name: "Sidra Younas", role: "Creative Designer", department: "graphic designers", image: "/sidra.jpg" }
+  ];
+
+  const departments = {
+    leadership: { 
+      name: "Leadership", 
+      icon: Crown, 
+      color: "from-yellow-400 to-orange-500",
+      bgColor: "bg-gradient-to-br from-yellow-400/20 to-orange-500/20"
+    },
+    "software engineering": { 
+      name: "Software Engineering", 
+      icon: Code, 
+      color: "from-blue-400 to-cyan-500",
+      bgColor: "bg-gradient-to-br from-blue-400/20 to-cyan-500/20"
+    },
+    "ai engineering": { 
+      name: "AI Engineering", 
+      icon: Brain, 
+      color: "from-purple-400 to-pink-500",
+      bgColor: "bg-gradient-to-br from-purple-400/20 to-pink-500/20"
+    },
+    "business management": { 
+      name: "Business Management", 
+      icon: Briefcase, 
+      color: "from-green-400 to-emerald-500",
+      bgColor: "bg-gradient-to-br from-green-400/20 to-emerald-500/20"
+    },
+    "graphic designers": { 
+      name: "Graphic Designers", 
+      icon: Palette, 
+      color: "from-pink-400 to-rose-500",
+      bgColor: "bg-gradient-to-br from-pink-400/20 to-rose-500/20"
+    }
+  };
+
+
+    const handleFlyingClick = (elementId) => {
+    setClickedElement(elementId);
+    setTimeout(() => setClickedElement(null), 600);
+  };
+
+
 
   const navItems = [
     { id: "home", label: "Home" },
@@ -215,86 +309,13 @@ const proudMoments = [
   ]
 
   
-
   const achievements = [
     {text:"Validated the market and built initial prototype.", date: "2024-Q4"},
     {text:"Secured $25k AWS credits to scale.", date:"2025-Q1"},
     {text:"Conducted pilots and trials in marts, universities, and offices, and booked 1,000+ cameras to date", date:"2025-Q2"}
   ];
 
-  const teamMembers = [
-    {
-      name: "Hafiz Muhammad Safiullah",
-      role: "CEO & Founder",
-      image: "/ceo.jpg",
-    },
-     {
-      name: "Muhammad Abdullah Baig",
-      role: "Co-Founder",
-      image: "/co.jpg",
-    },
-    {
-      name: "Eshaal Rasheed",
-      role: "IT Coordinator",
-      image: "/eshaal.jpg",
-    },
-    {
-      name: "Ghulaam Fatima",
-      role: "Graphic Designer",
-      image: "/fatima.jpg",
-    },
-    {
-      name: "Sidra Younas",
-      role: "Graphic Designer",
-      image: "/sidra.jpg",
-    },
-            {
-      name: "Bisma Wajid",
-      role: "Business Manager",
-      image: "/bisma.jpg",
-    },
-        {
-      name: "Fiza Wajid",
-      role: "Software Engineer",
-      image: "/female2.png",
-    },
-        {
-      name: "Areeba Waqar",
-      role: "Software Engineer",
-      image: "/areeba.jpg",
-    },
-        {
-      name: "Mahad Malik",
-      role: "Software Engineer",
-      image: "/mahad.jpg",
-    },
-            {
-      name: "Hassan bin Saqib",
-      role: "AI Engineer",
-      image: "/hasan.jpg",
-    },
-            {
-      name: "Kamran Ahmed",
-      role: "AI Engineer",
-      image: "/kamran.jpg",
-    },
-                {
-      name: "Iffah Naveed",
-      role: "AI Engineer",
-      image: "/iffah.jpg",
-    },
-                    {
-      name: "Simran Fatima",
-      role: "AI Engineer",
-      image: "/female2.png",
-    },
-                {
-      name: "Muhammad Ahsan",
-      role: "AI Engineer",
-      image: "/ahsan.jpg",
-    },
-    
-  ]
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-800 to-slate-900 text-white overflow-hidden">
@@ -995,113 +1016,175 @@ const proudMoments = [
 </section>
 
 
-   {/* TEAM */}
-<section
-  id="team"
-  className="py-24 px-8 bg-gradient-to-b from-slate-800 to-slate-900 relative overflow-hidden"
->
-  {/* Background effects */}
-  <div className="absolute inset-0 pointer-events-none">
-    <div className="neural-network"></div>
-    <div className="pulse-rings"></div>
-  </div>
-
-  <div className="max-w-7xl mx-auto relative z-10">
-    {/* Section Title */}
-    <div
-      className={`text-center mb-20 ${
-        visibleElements.has("team-title")
-          ? "animate-fadeInDown opacity-100"
-          : "opacity-0 translate-y-[-30px]"
-      }`}
-      data-animate-id="team-title"
-      style={{ animationDuration: "800ms" }}
+{/* TEAM */}
+ <section
+      id="team"
+      className="py-24 px-8 bg-gradient-to-b from-slate-800 to-slate-900 relative overflow-hidden"
     >
-      <h2 className="text-5xl font-extrabold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-        Our Team
-      </h2>
-      <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-        Meet the experts behind our revolutionary AI security solutions
-      </p>
-    </div>
+      {/* Background effects */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-cyan-500/30 rounded-full filter blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-purple-500/30 rounded-full filter blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-pink-500/20 rounded-full filter blur-2xl animate-pulse" style={{animationDelay: '4s'}}></div>
+      </div>
 
-    {/* Founders Section */}
-    <div className="flex flex-col md:flex-row justify-center gap-10 mb-20">
-      {teamMembers
-        .filter((member) => member.role.toLowerCase().includes("founder"))
-        .map((member, index) => (
-          <div
-            key={index}
-            className={` rounded-2xl p-8 border border-slate-700 hover:border-cyan-400/50 shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 max-w-md text-center ${
-              visibleElements.has(`founder-${index}`)
-                ? "animate-scaleIn opacity-100"
-                : "opacity-0 scale-90 translate-y-8"
-            } ${clickedElement === `founder-${index}` ? "animate-flyTowards" : "hover:scale-105"}`}
-            data-animate-id={`founder-${index}`}
-            style={{ animationDelay: `${index * 120}ms` }}
-            onClick={() => handleFlyingClick(`founder-${index}`)}
-          >
-            <div className="w-36 h-36 mx-auto mb-6 rounded-full overflow-hidden ring-4 ring-cyan-400/30">
-              <img
-                src={member.image || "/placeholder.png"}
-                alt={member.name || "Founder"}
-                className="w-full h-full object-cover"
-                onError={(e) => (e.target.src = "/placeholder.png")}
-              />
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Section Title */}
+        <div
+          className={`text-center mb-20 ${
+            visibleElements.has("team-title")
+              ? "animate-fadeInDown opacity-100"
+              : "opacity-0 translate-y-[-30px]"
+          }`}
+          data-animate-id="team-title"
+        >
+          <h2 className="text-5xl font-extrabold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+            Our Team
+          </h2>
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-8">
+            Meet the experts behind our revolutionary AI security solutions
+          </p>
+          
+          {/* Team Stats */}
+          <div className="flex justify-center gap-8 text-center">
+            <div className="flex items-center gap-2">
+              <Users className="w-5 h-5 text-cyan-400" />
+              <span className="text-white font-semibold">{teamMembers.length} Members</span>
             </div>
-            <h3 className="text-2xl font-bold mb-2 text-white group-hover:text-cyan-300 transition-colors">
-              {member.name || "Name"}
-            </h3>
-            <p className="text-cyan-300 font-medium mb-4">{member.role}</p>
-            <p className="text-gray-400 group-hover:text-gray-200 transition-colors text-sm leading-relaxed">
-              {member.description}
-            </p>
-          </div>
-        ))}
-    </div>
-
-    {/* Other Team Members */}
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
-      {teamMembers
-        .filter((member) => !member.role.toLowerCase().includes("founder"))
-        .map((member, index) => (
-          <div
-            key={index}
-            // className={`group bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-slate-700 hover:border-cyan-400/50 shadow-md hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 cursor-pointer text-center ${
-            className={` rounded-2xl p-6 border border-slate-700 hover:border-cyan-400/50 shadow-md hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 text-center ${  
-            visibleElements.has(`team-${index}`)
-                ? "animate-waveReveal opacity-100"
-                : "opacity-0 translate-y-12 scale-90"
-            } ${clickedElement === `team-${index}` ? "animate-flyTowards" : "hover:scale-105"}`}
-            data-animate-id={`team-${index}`}
-            style={{ animationDelay: `${(index + 2) * 120}ms` }}
-            onClick={() => handleFlyingClick(`team-${index}`)}
-          >
-            <div className="w-32 h-36 mx-auto mb-4 rounded-full overflow-hidden ring-2 ring-cyan-300/20">
-              <img
-                src={member.image || "/placeholder.png"}
-                alt={member.name || "Team Member"}
-                className="w-full h-full object-cover"
-                onError={(e) => (e.target.src = "/placeholder.png")}
-              />
+            <div className="flex items-center gap-2">
+              <Briefcase className="w-5 h-5 text-cyan-400" />
+              <span className="text-white font-semibold">{Object.keys(departments).length} Departments</span>
             </div>
-            <h3 className="text-xl font-semibold mb-1 text-white group-hover:text-cyan-300 transition-colors">
-              {member.name}
-            </h3>
-            <p className="text-cyan-300 font-medium mb-3">{member.role}</p>
-            <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-200 transition-colors">
-              {member.description}
-            </p>
           </div>
-        ))}
-    </div>
-  </div>
-</section>
+        </div>
 
+        {/* Department Sections */}
+        <div className="space-y-6">
+          {Object.entries(departments).map(([deptKey, dept], deptIndex) => {
+            const deptMembers = teamMembers.filter(member => member.department === deptKey);
+            const isExpanded = expandedDepartment === deptKey;
+            const IconComponent = dept.icon;
+            
+            return (
+              <div
+                key={deptKey}
+                className={`${dept.bgColor} backdrop-blur-lg rounded-2xl border border-slate-700/50 overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/10 ${
+                  visibleElements.has(`dept-${deptKey}`) 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-4'
+                } ${isExpanded ? 'ring-1 ring-cyan-400/30' : ''}`}
+                data-animate-id={`dept-${deptKey}`}
+                style={{ animationDelay: `${deptIndex * 150}ms` }}
+              >
+                <button
+                  onClick={() => setExpandedDepartment(isExpanded ? '' : deptKey)}
+                  className={`w-full p-6 flex items-center justify-between hover:bg-white/5 transition-all duration-300 group ${
+                    isExpanded ? 'bg-white/10' : ''
+                  }`}
+                >
+                  <div className="flex items-center gap-4">
+                    <div className={`p-3 rounded-xl bg-gradient-to-br ${dept.color} group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                      <IconComponent className="w-6 h-6 text-white drop-shadow-sm" />
+                    </div>
+                    <div className="text-left">
+                      <h3 className="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">
+                        {dept.name}
+                      </h3>
+                      <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
+                        {deptMembers.length} {deptMembers.length === 1 ? 'member' : 'members'}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="hidden md:flex gap-2">
+                      {deptMembers.slice(0, 3).map((member, idx) => (
+                        <img
+                          key={idx}
+                          src={member.image}
+                          alt={member.name}
+                          className="w-8 h-8 rounded-full ring-2 ring-white/20 -ml-2"
+                        />
+                      ))}
+                      {deptMembers.length > 3 && (
+                        <div className="w-8 h-8 rounded-full bg-slate-600 ring-2 ring-white/20 -ml-2 flex items-center justify-center text-xs text-white">
+                          +{deptMembers.length - 3}
+                        </div>
+                      )}
+                    </div>
+                    {isExpanded ? 
+                      <ChevronUp className="w-6 h-6 text-gray-400 group-hover:text-cyan-400 transition-colors" /> : 
+                      <ChevronDown className="w-6 h-6 text-gray-400 group-hover:text-cyan-400 transition-colors" />
+                    }
+                  </div>
+                </button>
+                
+                <div className={`transition-all duration-500 ease-in-out ${
+                  isExpanded ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
+                } overflow-hidden`}>
+                  <div className="p-6 pt-0">
+                    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                      {deptMembers.map((member, index) => (
+                        <div
+                          key={index}
+                          className={`group bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-slate-600/50 hover:border-cyan-400/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-cyan-500/10 cursor-pointer ${
+                            isExpanded ? 'animate-fadeInUp opacity-100' : 'opacity-0'
+                          } ${clickedElement === `${deptKey}-${index}` ? 'animate-pulse' : ''}`}
+                          style={{ animationDelay: `${index * 100}ms` }}
+                          onClick={() => handleFlyingClick(`${deptKey}-${index}`)}
+                        >
+                          <div className="flex items-start gap-4">
+                            <div className="relative">
+                              <img
+                                src={member.image || "/placeholder.png"}
+                                alt={member.name}
+                                className="w-16 h-16 rounded-full object-cover ring-2 ring-cyan-400/30 group-hover:ring-cyan-400/60 transition-all"
+                                onError={(e) => (e.target.src = "/placeholder.png")}
+                              />
+                              <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-slate-800"></div>
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <h4 className="font-semibold text-white group-hover:text-cyan-300 transition-colors text-base">
+                                {member.name || "Name"}
+                              </h4>
+                              <p className="text-cyan-300 font-medium text-sm mb-2">
+                                {member.role}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
 
+        {/* Bottom CTA */}
+      </div>
 
+      <style jsx>{`
+        @keyframes fadeInDown {
+          from { opacity: 0; transform: translateY(-30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes scaleIn {
+          from { opacity: 0; transform: scale(0.8); }
+          to { opacity: 1; transform: scale(1); }
+        }
 
-
+        .animate-fadeInDown { animation: fadeInDown 0.8s ease-out forwards; }
+        .animate-fadeInUp { animation: fadeInUp 0.6s ease-out forwards; }
+        .animate-scaleIn { animation: scaleIn 0.8s ease-out forwards; }
+      `}</style>
+    </section>
 
 
 
