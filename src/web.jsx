@@ -274,6 +274,11 @@ const proudMoments = [
       role: "AI Engineer",
       image: "/iffah.jpg",
     },
+                    {
+      name: "Simran Fatima",
+      role: "AI Engineer",
+      image: "/female2.png",
+    },
                 {
       name: "Muhammad Ahsan",
       role: "AI Engineer",
