@@ -162,7 +162,7 @@ const AISecurityWebsite = () => {
     // Software Engineering
     { name: "Fiza Wajid", role: "Full-Stack & Cloud Engineer", department: "software engineering", image: "/female2.png"},
     { name: "Mahad Malik", role: "Software Engineer", department: "software engineering", image: "/mahad.jpg"},
-    { name: "Areeba Waqar", role: "Software Engineer", department: "software engineering", image: "/areeba.jpg"},
+    { name: "Areeba Waqar", role: "Full-Stack engineer", department: "software engineering", image: "/areeba.jpg"},
 
     // AI Engineering
     { name: "Muhammad Ahsan", role: "ML Engineer", department: "ai engineering", image: "/ahsan.jpg"},
@@ -1126,7 +1126,7 @@ const proudMoments = [
                       {deptMembers.map((member, index) => (
                         <div
                           key={index}
-                          className={`group bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-slate-600/50 hover:border-cyan-400/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-cyan-500/10 cursor-pointer ${
+                          className={`mt-4 group bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-slate-600/50 hover:border-cyan-400/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-cyan-500/10 ${
                             isExpanded ? 'animate-fadeInUp opacity-100' : 'opacity-0'
                           } ${clickedElement === `${deptKey}-${index}` ? 'animate-pulse' : ''}`}
                           style={{ animationDelay: `${index * 100}ms` }}
