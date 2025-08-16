@@ -153,7 +153,7 @@ const AISecurityWebsite = () => {
   const teamMembers = [
     // Leadership
     { name: "Hafiz Muhammad Safiullah", role: "CEO & Founder", department: "leadership", image: "/ceo.jpg"},
-    { name: "Muhammad Abdullah Baig", role: "Co-Founder", department: "leadership", image: "/co.jpg" },
+    { name: "Muhammad Abdullah Baig", role: "AI Advisor", department: "leadership", image: "/co.jpg" },
   
     // Business Management
     { name: "Eshaal Rasheed", role: "IT Coordinator", department: "business management", image: "/eshaal.jpg" },
