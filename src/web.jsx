@@ -623,13 +623,13 @@ const proudMoments = [
         
         {/* Enhanced play button overlay */}
         <div className="absolute inset-0 flex items-center justify-center bg-black/50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <div className="text-center">
+          <div className="text-center ml-12">
             <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm mb-2 animate-pulse">
               <svg className="w-10 h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z"/>
               </svg>
             </div>
-            <p className="text-white text-sm font-medium">Click to watch with audio</p>
+            <p className="text-white text-sm font-medium -ml-7">Click to watch with audio</p>
           </div>
         </div>
         
