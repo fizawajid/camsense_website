@@ -27,6 +27,7 @@ const AISecurityWebsite = () => {
   const [visibleElements, setVisibleElements] = useState(new Set())
 
 
+const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
 
   const [expandedDepartment, setExpandedDepartment] = useState('leadership');
 
@@ -549,7 +550,7 @@ const proudMoments = [
 
 
             {/* NEW LIVE DETECTION FEED */}
-<div
+{/* <div
   className={`relative ${
     visibleElements.has("overview-preview") ? "animate-flyInFromRight" : "opacity-0"
   }`}
@@ -565,11 +566,7 @@ const proudMoments = [
       <h3 className="text-xl text-cyan-300 font-semibold">Live Detection Feed</h3>
 
       <div className="rounded-lg p-4 shadow flex justify-center">
-      {/* <img
-          src="/public/new-demo-hq.mp4"
-          alt="Live Detection Feed"
-          className="rounded-lg max-h-78"
-        /> */}
+
         <video
   src="https://res.cloudinary.com/drobocxkg/video/upload/v1754411116/demo-video1_smdxpa.mp4"
   
@@ -585,7 +582,116 @@ const proudMoments = [
 
     </div>
   </div>
+</div> */}
+
+<div
+  className={`relative ${
+    visibleElements.has("overview-preview") ? "animate-flyInFromRight" : "opacity-0"
+  }`}
+  data-animate-id="overview-preview"
+>
+  <div
+    className={`bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-8 border border-slate-600 shadow-2xl transition-all duration-300 cursor-pointer ${
+      clickedElement === "preview-card" ? "animate-flyTowards" : "hover:scale-105 hover:border-cyan-400/50"
+    }`}
+    onClick={() => {
+      handleFlyingClick("preview-card")
+      setIsVideoModalOpen(true)
+    }}
+  >
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <h3 className="text-xl text-cyan-300 font-semibold">Live Detection Feed</h3>
+        {/* Click indicator */}
+        <div className="flex items-center gap-2 text-cyan-400 text-sm animate-pulse">
+          <span>Click to expand</span>
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+          </svg>
+        </div>
+      </div>
+
+      <div className="rounded-lg p-4 shadow flex justify-center relative group">
+        <video
+          src="https://res.cloudinary.com/drobocxkg/video/upload/v1754411116/demo-video1_smdxpa.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="rounded-lg max-h-78"
+        />
+        
+        {/* Enhanced play button overlay */}
+        <div className="absolute inset-0 flex items-center justify-center bg-black/50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="text-center">
+            <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm mb-2 animate-pulse">
+              <svg className="w-10 h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+            <p className="text-white text-sm font-medium">Click to watch with audio</p>
+          </div>
+        </div>
+        
+    
+      </div>
+      
+      {/* Bottom CTA */}
+      <div className="text-center pt-2">
+        <p className="text-gray-400 text-sm">
+          📺 Click anywhere to view full demo with sound
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
+
+{/* Video Modal - Add this after your existing sections */}
+{isVideoModalOpen && (
+  <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+    {/* Backdrop blur */}
+    <div 
+      className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+      onClick={() => setIsVideoModalOpen(false)}
+    ></div>
+    
+    {/* Modal content */}
+    <div className="relative z-10 bg-slate-800 rounded-2xl p-6 max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl border border-slate-600 animate-slideIn">
+      {/* Header */}
+      <div className="flex justify-between items-center mb-4">
+        <h3 className="text-2xl font-bold text-white">Live Detection Feed</h3>
+        <button
+          onClick={() => setIsVideoModalOpen(false)}
+          className="w-10 h-10 rounded-full bg-slate-700 hover:bg-slate-600 flex items-center justify-center text-white transition-colors duration-200"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      
+      {/* Video container */}
+      <div className="relative bg-black rounded-lg overflow-hidden">
+        <video
+          src="https://res.cloudinary.com/drobocxkg/video/upload/v1755700185/video3_d7m5wi.mp4"
+          autoPlay
+          loop
+          controls
+          playsInline
+          className="w-full h-auto max-h-[70vh]"
+          // Note: Remove muted to enable audio
+        />
+      </div>
+      
+      {/* Description */}
+      <div className="mt-4 text-gray-300">
+        <p className="text-sm">
+          Watch our AI-powered security system detect suspicious activities in real-time with unprecedented accuracy.
+        </p>
+      </div>
+    </div>
+  </div>
+)}
 
           </div>
         </div>
