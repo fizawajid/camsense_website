@@ -160,14 +160,14 @@ const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
       department: "leadership", 
       image: "/ceo.jpg", 
       description: "Visionary leader driving innovation in AI-powered security solutions.",
-      linkedin: "https://www.linkedin.com/in/hafiz-muhammad-safiullah/" // Add actual LinkedIn URL
+      linkedin: "https://www.linkedin.com/in/muhammad-safiullah-80b460197/" // Add actual LinkedIn URL
     },
     { 
       name: "Muhammad Abdullah Baig", 
       role: "AI Advisor", 
       department: "leadership", 
       image: "/co.jpg",
-      linkedin: "https://www.linkedin.com/in/muhammad-abdullah-baig/" // Add actual LinkedIn URL
+      linkedin: "https://www.linkedin.com/in/muhammad-abdullah-baig-173132200/" // Add actual LinkedIn URL
     },
   
     // Business Management
@@ -485,6 +485,7 @@ const proudMoments = [
       </nav>
 
       {/*Video Background */}
+{/*Video Background - UPDATED FOR BETTER RESPONSIVENESS */}
       <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden pt-16">
         <div className="absolute inset-0 z-0">
           <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-40">
@@ -492,22 +493,24 @@ const proudMoments = [
           </video>
         </div>
 
-        {/* Hero Content */}
+        {/* Hero Content - IMPROVED RESPONSIVENESS */}
         <div
-          className="relative z-20 text-center max-w-6xl px-8 animate-fadeInUp"
+          className="relative z-20 text-center max-w-7xl px-4 sm:px-6 md:px-8 animate-fadeInUp"
           style={{ transform: `translateY(${scrollY * 0.2}px)` }}
         >
-          <div className="mb-8">
+          <div className="mb-4 sm:mb-6 md:mb-8">
             <div
-              className={`inline-flex items-center gap-2 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 border border-cyan-400/40 rounded-full px-6 py-2 mb-6 backdrop-blur-sm animate-glow transition-all duration-300 ${
+              className={`inline-flex items-center gap-2 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 border border-cyan-400/40 rounded-full px-4 sm:px-6 py-2 mb-4 sm:mb-6 backdrop-blur-sm animate-glow transition-all duration-300 ${
                 clickedElement === "badge" ? "animate-flyTowards" : "hover:scale-110"
               }`}
               onClick={() => handleFlyingClick("badge")}
             >
-              <Brain className="w-5 h-5 text-cyan-300" />
-              <span className="text-cyan-300 font-medium">AI-Powered Security</span>
+              <Brain className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-300" />
+              <span className="text-cyan-300 font-medium text-sm sm:text-base">AI-Powered Security</span>
             </div>
-            <h1 className="text-7xl md:text-8xl font-bold mb-6 leading-tight animate-slideInLeft">
+            
+            {/* UPDATED HEADING - Better responsive sizing */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 leading-tight animate-slideInLeft">
               <span className="bg-gradient-to-r from-white via-cyan-200 to-blue-300 bg-clip-text text-transparent">
                 Smart
               </span>
@@ -516,8 +519,10 @@ const proudMoments = [
                 Surveillance
               </span>
             </h1>
+            
+            {/* UPDATED DESCRIPTION - Better responsive sizing */}
             <p
-              className="text-xl md:text-2xl text-white-200 mb-8 max-w-3xl mx-auto leading-relaxed animate-fadeInUp"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl text-white-200 mb-6 sm:mb-8 max-w-4xl mx-auto leading-relaxed animate-fadeInUp px-2"
               style={{ animationDelay: "0.3s" }}
             >
               Revolutionary AI agent that transforms your CCTV system into an intelligent security powerhouse, detecting
@@ -525,10 +530,10 @@ const proudMoments = [
             </p>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex gap-6 justify-center mb-12 animate-fadeInUp" style={{ animationDelay: "0.5s" }}>
+          {/* CTA Buttons - IMPROVED RESPONSIVENESS */}
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-8 sm:mb-12 animate-fadeInUp px-4" style={{ animationDelay: "0.5s" }}>
             <button
-              className={`group relative bg-gradient-to-r from-cyan-400 to-blue-500 px-8 py-4 rounded-full font-semibold text-lg hover:from-cyan-300 hover:to-blue-400 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-400/25 ${
+              className={`group relative bg-gradient-to-r from-cyan-400 to-blue-500 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:from-cyan-300 hover:to-blue-400 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-400/25 ${
                 clickedElement === "cta-primary" ? "animate-flyTowards" : "animate-bounce-subtle"
               }`}
               onClick={() => {
@@ -536,15 +541,15 @@ const proudMoments = [
                 document.getElementById("product-overview")?.scrollIntoView({ behavior: "smooth" })
               }}
             >
-              <span className="flex items-center gap-2">
-                Get Started <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <span className="flex items-center justify-center gap-2">
+                Get Started <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-300 to-blue-400 rounded-full opacity-0 group-hover:opacity-20 transition-opacity"></div>
             </button>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto animate-fadeInUp" style={{ animationDelay: "0.7s" }}>
+          {/* Stats - IMPROVED RESPONSIVENESS */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8 max-w-2xl mx-auto animate-fadeInUp px-4" style={{ animationDelay: "0.7s" }}>
             {[
               { value: "99.7%", label: "Detection Accuracy" },
               { value: "<10s", label: "Response Time" },
@@ -552,22 +557,22 @@ const proudMoments = [
             ].map((stat, index) => (
               <div
                 key={index}
-                className={`text-center group transition-all duration-300 ${
+                className={`text-center group transition-all duration-300 py-2 ${
                   clickedElement === `stat-${index}` ? "animate-flyTowards" : "hover:scale-110"
                 }`}
                 onClick={() => handleFlyingClick(`stat-${index}`)}
               >
-                <div className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200">{stat.value}</div>
-                <div className="text-gray-300">{stat.label}</div>
+                <div className="text-2xl sm:text-3xl font-bold text-cyan-300 mb-1 sm:mb-2 group-hover:text-cyan-200">{stat.value}</div>
+                <div className="text-gray-300 text-sm sm:text-base">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
-          <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-cyan-300 rounded-full animate-bounce mt-2"></div>
+        {/* Scroll Indicator - RESPONSIVE POSITIONING */}
+        <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
+          <div className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-gray-300 rounded-full flex justify-center">
+            <div className="w-1 h-2 sm:h-3 bg-cyan-300 rounded-full animate-bounce mt-1 sm:mt-2"></div>
           </div>
         </div>
       </section>
