@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect, useRef } from "react"
 import "./style.css"
-import { Shield, Eye, Zap, BarChart3, MapPin, Target, Camera, AlertTriangle, Brain, CheckCircle, ArrowRight, Play, Pause, Menu, X, Mail, Phone, Users, Linkedin, Github, Twitter } from 'lucide-react'
+import { Shield, Eye, Zap, BarChart3, MapPin, Target, Camera, AlertTriangle, Brain, CheckCircle, ArrowRight, Play, Pause, Menu, X, Mail, Phone, Users, Linkedin, Github, Twitter, Instagram } from 'lucide-react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
   import { ChevronDown, ChevronUp, Crown, Code, Briefcase, Palette} from 'lucide-react';
@@ -14,6 +14,7 @@ import {
   GraduationCap,
   Home,
 } from "lucide-react";
+import { desc } from "framer-motion/client";
 
 
 
@@ -151,32 +152,123 @@ const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
 
 
   // Sample team data with your departments
-  const teamMembers = [
+ const teamMembers = [
     // Leadership
-    { name: "Hafiz Muhammad Safiullah", role: "CEO & Founder", department: "leadership", image: "/ceo.jpg"},
-    { name: "Muhammad Abdullah Baig", role: "AI Advisor", department: "leadership", image: "/co.jpg" },
+    { 
+      name: "Hafiz Muhammad Safiullah", 
+      role: "CEO & Founder", 
+      department: "leadership", 
+      image: "/ceo.jpg", 
+      description: "Visionary leader driving innovation in AI-powered security solutions.",
+      linkedin: "https://www.linkedin.com/in/hafiz-muhammad-safiullah/" // Add actual LinkedIn URL
+    },
+    { 
+      name: "Muhammad Abdullah Baig", 
+      role: "AI Advisor", 
+      department: "leadership", 
+      image: "/co.jpg",
+      linkedin: "https://www.linkedin.com/in/muhammad-abdullah-baig/" // Add actual LinkedIn URL
+    },
   
     // Business Management
-    { name: "Eshaal Rasheed", role: "IT Coordinator", department: "business management", image: "/eshaal.jpg" },
-    { name: "Bisma Wajid", role: "Business Manager", department: "business management", image: "/bisma.jpg"},
+    { 
+      name: "Eshaal Rasheed", 
+      role: "IT Coordinator", 
+      department: "business management", 
+      image: "/eshaal.jpg",
+      linkedin: "https://www.linkedin.com/in/eshaal-rasheed-0b79a82b6/" // Add actual LinkedIn URL
+    },
+    { 
+      name: "Bisma Wajid", 
+      role: "Business Manager", 
+      department: "business management", 
+      image: "/bisma.jpg",
+      linkedin: "https://www.linkedin.com/in/bisma-wajid-315154275/" // Add actual LinkedIn URL
+    },
 
     // Software Engineering
-    { name: "Fiza Wajid", role: "Full-Stack & Cloud Engineer", department: "software engineering", image: "/female2.png"},
-    { name: "Mahad Malik", role: "Software Engineer", department: "software engineering", image: "/mahad.jpg"},
-    { name: "Areeba Waqar", role: "Full-Stack engineer", department: "software engineering", image: "/areeba.jpg"},
+    { 
+      name: "Fiza Wajid", 
+      role: "Full-Stack & Cloud Engineer", 
+      department: "software engineering", 
+      image: "/female2.png",
+      linkedin: "https://www.linkedin.com/in/fiza-wajid-a3bba4312?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" // Add actual LinkedIn URL
+    },
+    { 
+      name: "Mahad Malik", 
+      role: "Software Engineer", 
+      department: "software engineering", 
+      image: "/mahad.jpg",
+      linkedin: "https://www.linkedin.com/in/mahad1090/" // Add actual LinkedIn URL
+    },
+    { 
+      name: "Areeba Waqar", 
+      role: "Full-Stack engineer", 
+      department: "software engineering", 
+      image: "/areeba.jpg",
+      linkedin: "https://www.linkedin.com/in/areeba-waqar-620b62297/" // Add actual LinkedIn URL
+    },
 
     // AI Engineering
-    { name: "Muhammad Ahsan", role: "ML Engineer", department: "ai engineering", image: "/ahsan.jpg"},
-    { name: "Simran Fatima", role: "ML Engineer", department: "ai engineering", image: "/female2.png"},
-    { name: "Kamran Ahmed", role: "ML Engineer", department: "ai engineering", image: "/kamran.jpg" },
-    { name: "Iffah Naveed", role: "ML Engineer", department: "ai engineering", image: "/iffah.jpg"},
-    { name: "Hassan bin Saqib", role: "ML Engineer", department: "ai engineering", image: "/hasan.jpg"},
+    { 
+      name: "Muhammad Ahsan", 
+      role: "ML Engineer", 
+      department: "ai engineering", 
+      image: "/ahsan.jpg",
+      linkedin: "https://www.linkedin.com/in/muhammad-ahsan-81843b247?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" // Add actual LinkedIn URL
+    },
+    { 
+      name: "Simran Fatima", 
+      role: "ML Engineer", 
+      department: "ai engineering", 
+      image: "/female2.png",
+      linkedin: "https://www.linkedin.com/in/simran-fatima-6785b9380?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" // Add actual LinkedIn URL
+    },
+    { 
+      name: "Kamran Ahmed", 
+      role: "ML Engineer", 
+      department: "ai engineering", 
+      image: "/kamran.jpg",
+      linkedin: "https://www.linkedin.com/in/kamran-ahmed-2a8a8b320" // Add actual LinkedIn URL
+    },
+    { 
+      name: "Iffah Naveed", 
+      role: "ML Engineer", 
+      department: "ai engineering", 
+      image: "/iffah.jpg",
+      linkedin: "https://www.linkedin.com/in/iffah-naveed-3323a7315?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" // Add actual LinkedIn URL
+    },
+    { 
+      name: "Hassan bin Saqib", 
+      role: "ML Engineer", 
+      department: "ai engineering", 
+      image: "/hasan.jpg",
+      linkedin: "https://www.linkedin.com/in/hassan-bin-saqib-0b2a78247" // Add actual LinkedIn URL
+    },
+        { 
+      name: "Alizah Haidar", 
+      role: "ML Engineer", 
+      department: "ai engineering", 
+      image: "/female2.png",
+      linkedin: "https://www.linkedin.com/in/simran-fatima-6785b9380?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" // Add actual LinkedIn URL
+    },
     
-
     // Graphic Designers
-    { name: "Ghulaam Fatima", role: "Creative Designer", department: "graphic designers", image: "/fatima.jpg"},
-    { name: "Sidra Younas", role: "Creative Designer", department: "graphic designers", image: "/sidra.jpg" }
-  ];
+    { 
+      name: "Ghulaam Fatima", 
+      role: "Creative Designer", 
+      department: "graphic designers", 
+      image: "/fatima.jpg",
+      linkedin: "https://www.linkedin.com/in/fatima-danyal-51797a29a" // Add actual LinkedIn URL
+    },
+    { 
+      name: "Sidra Younas", 
+      role: "Creative Designer", 
+      department: "graphic designers", 
+      image: "/sidra.jpg",
+      linkedin: "https://www.linkedin.com/in/sidra-younas-631a2b28b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" // Add actual LinkedIn URL
+    }
+];
 
   const departments = {
     leadership: { 
@@ -1249,12 +1341,35 @@ const proudMoments = [
                               <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-slate-800"></div>
                             </div>
                             <div className="flex-1 min-w-0">
-                              <h4 className="font-semibold text-white group-hover:text-cyan-300 transition-colors text-base">
-                                {member.name || "Name"}
-                              </h4>
-                              <p className="text-cyan-300 font-medium text-sm mb-2">
-                                {member.role}
-                              </p>
+                              <div className="flex items-start justify-between">
+                                <div className="flex-1">
+                                  <h4 className="font-semibold text-white group-hover:text-cyan-300 transition-colors text-base">
+                                    {member.name || "Name"}
+                                  </h4>
+                                  <p className="text-cyan-300 font-medium text-sm mb-2">
+                                    {member.role}
+                                  </p>
+                                </div>
+                                {/* LinkedIn Button */}
+                                {member.linkedin && (
+                                  <button
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      window.open(member.linkedin, '_blank');
+                                    }}
+                                    className="ml-2 p-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/40 border border-blue-500/30 hover:border-blue-400/60 transition-all duration-300 group/linkedin hover:scale-110 hover:shadow-lg hover:shadow-blue-500/20"
+                                    title={`View ${member.name}'s LinkedIn Profile`}
+                                  >
+                                    <svg 
+                                      className="w-4 h-4 text-blue-400 group-hover/linkedin:text-blue-300 transition-colors" 
+                                      fill="currentColor" 
+                                      viewBox="0 0 24 24"
+                                    >
+                                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                    </svg>
+                                  </button>
+                                )}
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -1471,6 +1586,12 @@ const proudMoments = [
                   color: "from-blue-400 to-blue-500",
                   name: "linkedin",
                   url: "https://www.linkedin.com/company/camsense/",
+                },
+                                {
+                  icon: Instagram,
+                  color: "from-blue-400 to-blue-500",
+                  name: "linkedin",
+                  url: "https://www.instagram.com/camsense.ai?igsh=aG0xZGhyeDh0NXF3",
                 },
               ].map((social, index) => (
                 <a
