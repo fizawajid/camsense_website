@@ -245,13 +245,6 @@ const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
       image: "/hasan.jpg",
       linkedin: "https://www.linkedin.com/in/hassan-bin-saqib-0b2a78247" // Add actual LinkedIn URL
     },
-        { 
-      name: "Alizah Haidar", 
-      role: "ML Engineer", 
-      department: "ai engineering", 
-      image: "/female2.png",
-      linkedin: "https://www.linkedin.com/in/simran-fatima-6785b9380?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" // Add actual LinkedIn URL
-    },
     
     // Graphic Designers
     { 
