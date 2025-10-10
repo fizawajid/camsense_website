@@ -1015,6 +1015,13 @@ const proudMoments = [
     className="max-w-full max-h-full object-contain opacity-100 p-2"
   />
 </div>
+<div className="w-40 h-24 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/30">
+  <img 
+    src="/image/ist.png" 
+    alt="Company 2" 
+    className="max-w-full max-h-full object-contain opacity-100 p-2"
+  />
+</div>
 </div>
         </div>
       </div>
