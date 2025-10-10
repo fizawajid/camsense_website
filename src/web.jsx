@@ -1000,22 +1000,22 @@ const proudMoments = [
           style={{ animationDelay: "0.3s" }}
         >
           {/* Partner Logos Grid */}
- <div className="grid grid-cols-2 gap-8 items-center justify-items-center perspective-1000">
+ <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 items-center justify-items-center perspective-1000">
       {/* Company 1 */}
-      <div className="group relative w-44 h-28">
+      <div className="group relative w-full max-w-[176px] h-28">
         {/* Floating animated background */}
         <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-500 rounded-2xl opacity-20 group-hover:opacity-40 blur-xl transition-all duration-700 animate-pulse"></div>
         
         {/* Main card with 3D effect */}
-        <div className="relative w-full h-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl border border-cyan-500/20 flex items-center justify-center overflow-hidden transform transition-all duration-500 group-hover:scale-105 group-hover:rotate-y-12 group-hover:shadow-2xl group-hover:shadow-cyan-500/30">
+        <div className="relative w-full h-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl border border-cyan-500/20 flex items-center justify-center overflow-hidden transform transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl group-hover:shadow-cyan-500/30">
           
           {/* Shine effect */}
           <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
           
           {/* Geometric pattern overlay */}
           <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
-            <div className="absolute top-0 right-0 w-20 h-20 border-r-2 border-t-2 border-cyan-400"></div>
-            <div className="absolute bottom-0 left-0 w-20 h-20 border-l-2 border-b-2 border-cyan-400"></div>
+            <div className="absolute top-0 right-0 w-16 sm:w-20 h-16 sm:h-20 border-r-2 border-t-2 border-cyan-400"></div>
+            <div className="absolute bottom-0 left-0 w-16 sm:w-20 h-16 sm:h-20 border-l-2 border-b-2 border-cyan-400"></div>
           </div>
           
           {/* Glowing dots */}
@@ -1025,22 +1025,22 @@ const proudMoments = [
           <img 
             src="/image/images.jpeg" 
             alt="Company 1" 
-            className="relative z-10 max-w-full max-h-full object-contain p-5 filter brightness-90 group-hover:brightness-110 transform transition-all duration-500 group-hover:scale-110"
+            className="relative z-10 max-w-full max-h-full object-contain p-4 sm:p-5 filter brightness-90 group-hover:brightness-110 transform transition-all duration-500 group-hover:scale-110"
           />
         </div>
       </div>
 
       {/* Company 2 */}
-      <div className="group relative w-44 h-28">
+      <div className="group relative w-full max-w-[176px] h-28">
         <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 rounded-2xl opacity-20 group-hover:opacity-40 blur-xl transition-all duration-700 animate-pulse"></div>
         
-        <div className="relative w-full h-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl border border-blue-500/20 flex items-center justify-center overflow-hidden transform transition-all duration-500 group-hover:scale-105 group-hover:rotate-y-12 group-hover:shadow-2xl group-hover:shadow-blue-500/30">
+        <div className="relative w-full h-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl border border-blue-500/20 flex items-center justify-center overflow-hidden transform transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl group-hover:shadow-blue-500/30">
           
           <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
           
           <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
-            <div className="absolute top-0 right-0 w-20 h-20 border-r-2 border-t-2 border-blue-400"></div>
-            <div className="absolute bottom-0 left-0 w-20 h-20 border-l-2 border-b-2 border-blue-400"></div>
+            <div className="absolute top-0 right-0 w-16 sm:w-20 h-16 sm:h-20 border-r-2 border-t-2 border-blue-400"></div>
+            <div className="absolute bottom-0 left-0 w-16 sm:w-20 h-16 sm:h-20 border-l-2 border-b-2 border-blue-400"></div>
           </div>
           
           <div className="absolute top-2 right-2 w-2 h-2 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:animate-ping"></div>
@@ -1049,54 +1049,55 @@ const proudMoments = [
           <img 
             src="/image/nicat.png" 
             alt="Company 2" 
-            className="relative z-10 max-w-full max-h-full object-contain p-5 filter brightness-90 group-hover:brightness-110 transform transition-all duration-500 group-hover:scale-110"
+            className="relative z-10 max-w-full max-h-full object-contain p-4 sm:p-5 filter brightness-90 group-hover:brightness-110 transform transition-all duration-500 group-hover:scale-110"
           />
         </div>
       </div>
 
       {/* Company 3 */}
-      <div className="group relative w-44 h-28">
+      <div className="group relative w-full max-w-[176px] h-28">
         <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 via-cyan-500 to-purple-500 rounded-2xl opacity-20 group-hover:opacity-40 blur-xl transition-all duration-700 animate-pulse"></div>
         
-        <div className="relative w-full h-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl border border-purple-500/20 flex items-center justify-center overflow-hidden transform transition-all duration-500 group-hover:scale-105 group-hover:rotate-y-12 group-hover:shadow-2xl group-hover:shadow-purple-500/30">
+        <div className="relative w-full h-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl border border-purple-500/20 flex items-center justify-center overflow-hidden transform transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl group-hover:shadow-purple-500/30">
           
           <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
           
           <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
-            <div className="absolute top-0 right-0 w-20 h-20 border-r-2 border-t-2 border-purple-400"></div>
-            <div className="absolute bottom-0 left-0 w-20 h-20 border-l-2 border-b-2 border-purple-400"></div>
+            <div className="absolute top-0 right-0 w-16 sm:w-20 h-16 sm:h-20 border-r-2 border-t-2 border-purple-400"></div>
+            <div className="absolute bottom-0 left-0 w-16 sm:w-20 h-16 sm:h-20 border-l-2 border-b-2 border-purple-400"></div>
           </div>
           
           <div className="absolute top-2 right-2 w-2 h-2 bg-purple-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:animate-ping"></div>
           <div className="absolute bottom-2 left-2 w-2 h-2 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100 group-hover:animate-ping"></div>
           
           <img 
-            src="/image/ist2.png" 
+            src="/image/ist.png" 
             alt="Company 3" 
-            className="relative z-10 max-w-full max-h-full object-contain p-5 filter brightness-90 group-hover:brightness-110 transform transition-all duration-500 group-hover:scale-110"
+            className="relative z-10 max-w-full max-h-full object-contain p-4 sm:p-5 filter brightness-90 group-hover:brightness-110 transform transition-all duration-500 group-hover:scale-110"
           />
         </div>
       </div>
-            {/* Company 4 */}
-      <div className="group relative w-44 h-28">
-        <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 via-cyan-500 to-purple-500 rounded-2xl opacity-20 group-hover:opacity-40 blur-xl transition-all duration-700 animate-pulse"></div>
+
+      {/* Company 4 */}
+      <div className="group relative w-full max-w-[176px] h-28">
+        <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-pink-500 to-cyan-500 rounded-2xl opacity-20 group-hover:opacity-40 blur-xl transition-all duration-700 animate-pulse"></div>
         
-        <div className="relative w-full h-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl border border-purple-500/20 flex items-center justify-center overflow-hidden transform transition-all duration-500 group-hover:scale-105 group-hover:rotate-y-12 group-hover:shadow-2xl group-hover:shadow-purple-500/30">
+        <div className="relative w-full h-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl border border-pink-500/20 flex items-center justify-center overflow-hidden transform transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl group-hover:shadow-pink-500/30">
           
           <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
           
           <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
-            <div className="absolute top-0 right-0 w-20 h-20 border-r-2 border-t-2 border-purple-400"></div>
-            <div className="absolute bottom-0 left-0 w-20 h-20 border-l-2 border-b-2 border-purple-400"></div>
+            <div className="absolute top-0 right-0 w-16 sm:w-20 h-16 sm:h-20 border-r-2 border-t-2 border-pink-400"></div>
+            <div className="absolute bottom-0 left-0 w-16 sm:w-20 h-16 sm:h-20 border-l-2 border-b-2 border-pink-400"></div>
           </div>
           
-          <div className="absolute top-2 right-2 w-2 h-2 bg-purple-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:animate-ping"></div>
+          <div className="absolute top-2 right-2 w-2 h-2 bg-pink-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:animate-ping"></div>
           <div className="absolute bottom-2 left-2 w-2 h-2 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100 group-hover:animate-ping"></div>
           
           <img 
             src="/image/i2i.png" 
-            alt="Company 3" 
-            className="relative z-10 max-w-full max-h-full object-contain p-5 filter brightness-90 group-hover:brightness-110 transform transition-all duration-500 group-hover:scale-110"
+            alt="Company 4" 
+            className="relative z-10 max-w-full max-h-full object-contain p-4 sm:p-5 filter brightness-90 group-hover:brightness-110 transform transition-all duration-500 group-hover:scale-110"
           />
         </div>
       </div>
