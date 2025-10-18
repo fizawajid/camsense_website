@@ -15,6 +15,7 @@ import {
   Home,
 } from "lucide-react";
 import { desc } from "framer-motion/client";
+import TestModelForm from './testmodel';
 
 
 
@@ -406,7 +407,7 @@ const proudMoments = [
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-800 to-slate-900 text-white overflow-hidden">
       {/* Navigation Header */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-700/50 shadow-lg">
+      <nav className="fixed top-0 left-0 right-0 z-[99999] bg-slate-900/95 backdrop-blur-md border-b border-slate-700/50 shadow-lg">
         <div className="px-8">
           <div className="flex items-center justify-between h-16">
 <div
@@ -732,9 +733,11 @@ const proudMoments = [
           📺 Click anywhere to view full demo with sound
         </p>
       </div>
+      
     </div>
   </div>
 </div>
+
 
 {/* Video Modal - Add this after your existing sections */}
 {isVideoModalOpen && (
@@ -784,7 +787,11 @@ const proudMoments = [
 )}
 
           </div>
+
         </div>
+                      <div className="mt-12 max-w-md mx-auto">
+      <TestModelForm />
+    </div>
       </section>
 
 
