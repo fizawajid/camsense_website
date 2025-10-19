@@ -76,7 +76,7 @@ const handleSubmit = async (e) => {
     submitData.append('modelType', formData.modelType);
     submitData.append('video', formData.video);
 
-    const response = await fetch('http://localhost:5000/api/test-model', {
+    const response = await fetch('https://camsense-website.onrender.com/api/test-model', {
       // https://camsense-website.onrender.com/api/test-model
       
       method: 'POST',
