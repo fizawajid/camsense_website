@@ -77,6 +77,8 @@ const handleSubmit = async (e) => {
     submitData.append('video', formData.video);
 
     const response = await fetch('http://localhost:5000/api/test-model', {
+      // https://camsense-website.onrender.com/api/test-model
+      
       method: 'POST',
       body: submitData
       // Don't set Content-Type header - FormData will set it automatically
