@@ -64,7 +64,7 @@ const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "product-overview", "modules", "achievements", "proud-moments", "goals", "team", "location", "contact"]
+      const sections = ["home", "product-overview", "modules", "pricing", "achievements", "proud-moments", "goals", "team", "location", "contact"]
       const scrollPosition = window.scrollY + window.innerHeight / 3
       
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -94,7 +94,7 @@ const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
   //scroll for active section
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "modules", "achievements","proud-moments", "goals", "team", "location", "contact"]
+      const sections = ["home", "modules", "pricing", "achievements","proud-moments", "goals", "team", "location", "contact"]
       // const scrollPosition = window.scrollY + 100
       const scrollPosition = window.scrollY + window.innerHeight / 2
       for (const section of sections) {
@@ -309,6 +309,7 @@ const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
   const navItems = [
     { id: "home", label: "Home" },
     { id: "modules", label: "Modules" },
+    { id: "pricing", label: "Pricing" },
     { id: "achievements", label: "Achievements" },
     { id: "proud-moments", label: "Accomplishments" },
     { id: "goals", label: "Goals" },
@@ -354,6 +355,76 @@ const modules = [
     description: "Keep your home safe with smart, AI-powered monitoring",
     color: "from-purple-400 to-pink-400",
   },
+];
+
+
+// Add this after the modules array definition
+const pricingPlans = [
+  {
+    title: "Setup",
+    price: "200",
+    period: "one-time",
+    description: "Initial configuration and deployment support",
+    color: "from-indigo-500 to-purple-600",
+    borderColor: "border-indigo-500/50",
+    features: [
+      "Complete system configuration",
+      "Initial deployment support",
+      "Integration assistance"
+    ],
+    highlight: "Total: $400",
+    highlightSub: "(Setup + License + Maint.)",
+    icon: "💡"
+  },
+  {
+    title: "Maintenance",
+    price: "50",
+    period: "per quarter",
+    description: "Regular system updates and technical support",
+    color: "from-emerald-500 to-teal-600",
+    borderColor: "border-emerald-500/50",
+    features: [
+      "Software updates",
+      "Bug fixes & patches",
+      "Technical support",
+      "System monitoring",
+      "Priority assistance"
+    ],
+    icon: "⚙️"
+  },
+  {
+    title: "Licensing",
+    price: "150",
+    period: "per module",
+    description: "Software access and usage rights per module",
+    color: "from-amber-500 to-orange-600",
+    borderColor: "border-amber-500/50",
+    features: [
+      "Full software access",
+      "Unlimited usage",
+      "Feature updates",
+      "Compliance support",
+      "Multi-user access"
+    ],
+    icon: "🔑"
+  },
+  {
+    title: "Annual Plan",
+    price: "760",
+    period: "per year (save 22%)",
+    description: "Best value with annual prepaid discount",
+    color: "from-pink-500 to-rose-600",
+    borderColor: "border-pink-500/50",
+    features: [
+      "2% discount on licensing",
+      "20% off on maintenance",
+      "Prepaid convenience",
+      "Premium support tier",
+      "Priority features access"
+    ],
+    badge: "BEST VALUE",
+    icon: "👑"
+  }
 ];
 
 
@@ -918,6 +989,130 @@ const proudMoments = [
     </div>
   </div>
 </section>
+
+
+{/* Pricing Section - ADD THIS ENTIRE SECTION */}
+<section id="pricing" className="py-20 px-8 bg-gradient-to-b from-slate-600 to-slate-700 relative overflow-hidden">
+  <div className="absolute inset-0 pointer-events-none">
+    <div className="circuit-pattern"></div>
+    <div className="data-stream"></div>
+  </div>
+
+  <div className="max-w-7xl mx-auto relative z-10">
+    <div
+  className={`text-center mb-16 ${
+    visibleElements.has("pricing-title") ? "animate-flyInFromTop" : "opacity-0"
+  }`}
+  data-animate-id="pricing-title"
+>
+  <h2 className="text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-200 to-blue-300 bg-clip-text text-transparent drop-shadow-2xl pb-2">
+    Transparent Pricing
+  </h2>
+  <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+    Flexible plans designed to scale with your security needs
+  </p>
+  <div className="mt-8 flex justify-center">
+    <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full animate-pulse"></div>
+  </div>
+</div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {pricingPlans.map((plan, index) => (
+        <div
+          key={index}
+          className={`relative group transition-all duration-700 ${
+            visibleElements.has(`pricing-${index}`) 
+              ? "animate-slideInUp opacity-100" 
+              : "opacity-0 translate-y-12"
+          } ${clickedElement === `pricing-${index}` ? "animate-flyTowards" : "hover:scale-105"}`}
+          data-animate-id={`pricing-${index}`}
+          style={{
+            animationDelay: visibleElements.has(`pricing-${index}`) ? `${index * 150}ms` : '0ms',
+            animationDuration: '800ms',
+            animationFillMode: 'both'
+          }}
+          onClick={() => handleFlyingClick(`pricing-${index}`)}
+        >
+          {/* Card Shadow */}
+          <div className="absolute inset-0 bg-black/20 rounded-2xl blur-xl transform translate-y-4 group-hover:translate-y-6 transition-all duration-500"></div>
+          
+          {/* Main Card */}
+          <div className={`relative h-full bg-white rounded-2xl border-2 ${plan.borderColor} overflow-hidden shadow-2xl group-hover:shadow-cyan-500/20 transition-all duration-500`}>
+            
+            {/* Badge (if exists) */}
+            {plan.badge && (
+              <div className="absolute top-4 right-4 bg-gradient-to-r from-pink-500 to-rose-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-pulse">
+                {plan.badge}
+              </div>
+            )}
+
+            {/* Header with gradient */}
+            <div className={`bg-gradient-to-br ${plan.color} p-6 text-white relative overflow-hidden`}>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              <div className="relative z-10">
+                <div className="text-4xl mb-2">{plan.icon}</div>
+                <h3 className="text-2xl font-bold mb-2">{plan.title}</h3>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-lg">$</span>
+                  <span className="text-5xl font-extrabold">{plan.price}</span>
+                </div>
+                <p className="text-white/90 text-sm mt-1 font-medium">{plan.period}</p>
+              </div>
+              {/* Decorative corner */}
+              <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-bl-full"></div>
+            </div>
+
+            {/* Body */}
+            <div className="p-6 bg-white">
+              <p className="text-gray-600 text-sm mb-6 h-10">{plan.description}</p>
+              
+              {/* Features List */}
+              <ul className="space-y-3 mb-6">
+                {plan.features.map((feature, fIndex) => (
+                  <li key={fIndex} className="flex items-start gap-2 text-gray-700">
+                    <span className={`w-5 h-5 rounded-full bg-gradient-to-br ${plan.color} flex items-center justify-center flex-shrink-0 mt-0.5`}>
+                      <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <span className="text-sm leading-tight">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Highlight Box (if exists) */}
+              {plan.highlight && (
+                <div className="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-lg p-4 mt-6">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-xl">💡</span>
+                    <span className="font-bold text-amber-900">{plan.highlight}</span>
+                  </div>
+                  <p className="text-xs text-amber-700">{plan.highlightSub}</p>
+                </div>
+              )}
+            </div>
+
+            {/* Hover Border Effect */}
+            <div className={`absolute inset-0 rounded-2xl ring-2 ring-inset ring-transparent group-hover:ring-cyan-400/30 transition-all duration-500 pointer-events-none`}></div>
+          </div>
+
+          {/* Number Badge */}
+          <div className={`absolute -top-3 -left-3 w-8 h-8 bg-gradient-to-br ${plan.color} rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg z-10`}>
+            {index + 1}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    {/* Bottom Note */}
+    <div className="mt-12 text-center">
+      <p className="text-gray-300 text-sm">
+        💳 All prices in USD • Flexible payment options available • Enterprise plans available on request
+      </p>
+    </div>
+  </div>
+</section>
+
 
 
 {/* achievements */}
