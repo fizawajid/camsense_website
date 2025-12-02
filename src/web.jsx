@@ -1778,12 +1778,15 @@ const proudMoments = [
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div className="space-y-6">
                   {[
-                    {
-                      icon: MapPin,
-                      title: "Headquarters",
-                      desc: `NICAT, J442+J68, Old Airport Rd,\nOld Chaklala Cantt, Rawalpindi, 46000`,
-                      color: "from-cyan-400 to-blue-500",
-                    },
+{
+  icon: MapPin,
+  title: "Headquarters",
+  desc: `• NICAT, J442+J68, Old Airport Rd,
+  Old Chaklala Cantt, Rawalpindi, 46000
+• Portugal`,
+  color: "from-cyan-400 to-blue-500",
+},
+
                     {
                       icon: Target,
                       title: "Global Reach",
