@@ -1328,6 +1328,30 @@ const proudMoments = [
           />
         </div>
       </div>
+      {/* company 6 */}
+            <div className="group relative w-full max-w-[176px] h-28">
+        <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-pink-500 to-cyan-500 rounded-2xl opacity-20 group-hover:opacity-40 blur-xl transition-all duration-700 animate-pulse"></div>
+        
+        <div className="relative w-full h-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl border border-pink-500/20 flex items-center justify-center overflow-hidden transform transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl group-hover:shadow-pink-500/30">
+          
+          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
+          
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
+            <div className="absolute top-0 right-0 w-16 sm:w-20 h-16 sm:h-20 border-r-2 border-t-2 border-pink-400"></div>
+            <div className="absolute bottom-0 left-0 w-16 sm:w-20 h-16 sm:h-20 border-l-2 border-b-2 border-pink-400"></div>
+          </div>
+          
+          <div className="absolute top-2 right-2 w-2 h-2 bg-pink-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:animate-ping"></div>
+          <div className="absolute bottom-2 left-2 w-2 h-2 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100 group-hover:animate-ping"></div>
+          
+          <img 
+            src="/image/accelra.webp" 
+            alt="Company 4" 
+            className="relative z-10 max-w-full max-h-full object-contain p-4 sm:p-5 filter brightness-90 group-hover:brightness-110 transform transition-all duration-500 group-hover:scale-110"
+          />
+        </div>
+      </div>
+
 
 
     </div>
