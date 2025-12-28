@@ -64,7 +64,7 @@ const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "product-overview", "modules", "pricing", "achievements", "proud-moments", "goals", "team", "location", "contact"]
+      const sections = ["home", "product-overview", "pricing", "achievements", "proud-moments", "goals", "team", "location", "contact"]
       const scrollPosition = window.scrollY + window.innerHeight / 3
       
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -94,7 +94,7 @@ const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
   //scroll for active section
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "modules", "pricing", "achievements","proud-moments", "goals", "team", "location", "contact"]
+      const sections = ["home", "pricing", "achievements","proud-moments", "goals", "team", "location", "contact"]
       // const scrollPosition = window.scrollY + 100
       const scrollPosition = window.scrollY + window.innerHeight / 2
       for (const section of sections) {
@@ -308,7 +308,7 @@ const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
 
   const navItems = [
     { id: "home", label: "Home" },
-    { id: "modules", label: "Modules" },
+    // { id: "modules", label: "Modules" },
     { id: "pricing", label: "Pricing" },
     { id: "achievements", label: "Achievements" },
     { id: "proud-moments", label: "Accomplishments" },
@@ -869,7 +869,7 @@ const proudMoments = [
 
 
      {/* Modules Section */}
-<section id="modules" className="relative py-20 px-8 bg-gradient-to-b from-slate-700 to-slate-600 overflow-hidden">
+{/* <section id="modules" className="relative py-20 px-8 bg-gradient-to-b from-slate-700 to-slate-600 overflow-hidden">
  
   <div className="absolute inset-0 pointer-events-none">
     <div className="circuit-pattern"></div>
@@ -988,7 +988,7 @@ const proudMoments = [
       ))}
     </div>
   </div>
-</section>
+</section> */}
 
 
 {/* Pricing Section - ADD THIS ENTIRE SECTION */}
@@ -1782,8 +1782,7 @@ const proudMoments = [
   icon: MapPin,
   title: "Headquarters",
   desc: `• NICAT, J442+J68, Old Airport Rd,
-  Old Chaklala Cantt, Rawalpindi, 46000
-• Portugal`,
+  Old Chaklala Cantt, Rawalpindi, 46000`,
   color: "from-cyan-400 to-blue-500",
 },
 
@@ -1865,8 +1864,7 @@ const proudMoments = [
               {
                 icon: Mail,
                 title: "Email Us",
-                primary: "muhammadsafiullah@gmail.com",
-                secondary: "hafizmuhammadsafiullah@gmail.com",
+                primary: "safi@camsense.org",
                 color: "from-cyan-400 to-blue-500",
               },
               {
