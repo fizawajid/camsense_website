@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import Hls from "hls.js";
 
-const HLS_URL = "http://32.192.67.161/hls/stream.m3u8";
+const HLS_URL = "https://api.camsense.org/hls/stream.m3u8";
 const RTSP_RAW_URL = "rtsp://174.56.144.149:554/11";  // shown in dashboard
-const WS_URL = "ws://32.192.67.161:8765";
+const WS_URL = "wss://api.camsense.org/ws";
 // const WS_URL = null;
 
 const ALERT_SOUND_URL = "https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3";
