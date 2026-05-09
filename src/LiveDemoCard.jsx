@@ -1,15 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 import Hls from "hls.js";
+import { createPortal } from "react-dom";
 
 const HLS_URL = "https://api.camsense.org/hls/stream.m3u8";
-const RTSP_RAW_URL = "rtsp://174.56.144.149:554/11";  // shown in dashboard
+const RTSP_RAW_URL = "rtsp://174.56.144.149:554/11";
 const WS_URL = "wss://api.camsense.org/ws";
-// const WS_URL = null;
-
 const ALERT_SOUND_URL = "https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3";
 
 export default function LiveDemoCard() {
   const videoRef = useRef(null);
+  const modalVideoRef = useRef(null);
   const [showDashboard, setShowDashboard] = useState(false);
   const [stats, setStats] = useState({ persons: 0, cars: 0, timestamp: "", detections: [] });
   const [history, setHistory] = useState([]);
@@ -18,7 +18,7 @@ export default function LiveDemoCard() {
   const audioRef = useRef(null);
   const wsRef = useRef(null);
 
-  // HLS player
+  // HLS player — card video
   useEffect(() => {
     if (!videoRef.current) return;
     if (Hls.isSupported()) {
@@ -30,6 +30,19 @@ export default function LiveDemoCard() {
       videoRef.current.src = HLS_URL;
     }
   }, []);
+
+  // HLS player — modal video
+  useEffect(() => {
+    if (!showDashboard || !modalVideoRef.current) return;
+    if (Hls.isSupported()) {
+      const hls = new Hls({ lowLatencyMode: true });
+      hls.loadSource(HLS_URL);
+      hls.attachMedia(modalVideoRef.current);
+      return () => hls.destroy();
+    } else if (modalVideoRef.current.canPlayType("application/vnd.apple.mpegurl")) {
+      modalVideoRef.current.src = HLS_URL;
+    }
+  }, [showDashboard]);
 
   // WebSocket
   useEffect(() => {
@@ -47,27 +60,20 @@ export default function LiveDemoCard() {
           if (currentlyEnabled && (data.persons > 0 || data.cars > 0)) {
             const id = Date.now();
             const msg = `Detected: ${data.persons} person(s), ${data.cars} car(s)`;
-
-            // Play sound
             if (audioRef.current) {
               audioRef.current.currentTime = 0;
               audioRef.current.play().catch(() => {});
             }
-
-            // Replace any existing alert with this one
             setAlerts([{ id, msg }]);
-
-            // Clear after 3 seconds
             setTimeout(() => setAlerts([]), 3000);
           } else if (!currentlyEnabled) {
-            // Immediately clear any lingering alert when disabled
             setAlerts([]);
           }
-          return currentlyEnabled; // don't actually change the state
+          return currentlyEnabled;
         });
       };
 
-      ws.onclose = () => setTimeout(connect, 3000); // auto-reconnect
+      ws.onclose = () => setTimeout(connect, 3000);
     };
     connect();
     return () => wsRef.current?.close();
@@ -82,129 +88,258 @@ export default function LiveDemoCard() {
       {/* Alert toasts */}
       <div className="fixed top-24 left-1/2 -translate-x-1/2 z-[999999] pointer-events-none">
         {alerts.map(a => (
-          <div key={a.id} className="bg-red-600 text-white px-6 py-3 rounded-xl shadow-2xl text-sm font-semibold flex items-center gap-3 animate-slideIn whitespace-nowrap">
-            <span className="w-2 h-2 rounded-full bg-white animate-ping inline-block flex-shrink-0"/>
+          <div key={a.id} className="bg-red-600 text-white px-6 py-3 rounded-xl shadow-2xl text-sm font-semibold flex items-center gap-3 whitespace-nowrap">
+            <span className="w-2 h-2 rounded-full bg-white animate-ping inline-block flex-shrink-0" />
             {a.msg}
           </div>
         ))}
       </div>
 
-      {/* Main card */}
-      <div className="relative bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl border border-slate-600 shadow-2xl overflow-hidden">
-        {/* Live badge */}
-        <div className="absolute top-3 left-3 z-10 flex items-center gap-2 bg-red-600/90 text-white text-xs font-bold px-3 py-1 rounded-full">
-          <span className="w-2 h-2 rounded-full bg-white animate-ping"/>
+      {/* ── COMPACT CARD ── */}
+      <div className="relative rounded-2xl border border-[#00d4ff]/20 shadow-2xl shadow-[#00d4ff]/5 overflow-hidden"
+        style={{ background: "linear-gradient(135deg, #041428 0%, #020B18 100%)" }}>
+
+        {/* LIVE badge */}
+        <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 bg-black/70 border border-[#00d4ff]/20 text-white text-[10px] font-bold px-2.5 py-1 rounded-full backdrop-blur-sm">
+          <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping inline-block" />
           LIVE
         </div>
 
-        {/* Alert toggle button */}
+        {/* Alerts toggle */}
         <button
-          onClick={() => setAlertsEnabled(v => !v)}
-          className={`absolute top-3 right-3 z-10 px-3 py-1 rounded-full text-xs font-semibold border transition-all ${
+          onClick={e => { e.stopPropagation(); setAlertsEnabled(v => !v); }}
+          className={`absolute top-3 right-3 z-10 px-3 py-1 rounded-full text-xs font-semibold border transition-all backdrop-blur-sm ${
             alertsEnabled
-              ? "bg-red-500 border-red-400 text-white"
-              : "bg-slate-700 border-slate-500 text-gray-300 hover:border-red-400"
+              ? "bg-red-500/80 border-red-400 text-white"
+              : "bg-black/60 border-[#00d4ff]/20 text-gray-300 hover:border-[#00d4ff]/50 hover:text-[#00d4ff]"
           }`}
         >
           {alertsEnabled ? "🔔 Alerts ON" : "🔕 Alerts OFF"}
         </button>
 
-        {/* Video */}
+        {/* Clickable video */}
         <div className="relative cursor-pointer group" onClick={() => setShowDashboard(true)}>
           <video
             ref={videoRef}
-            autoPlay
-            muted
-            playsInline
-            className="w-full rounded-t-2xl bg-black"
+            autoPlay muted playsInline
+            className="w-full bg-black"
             style={{ maxHeight: "320px", objectFit: "cover" }}
           />
-          <div className="absolute inset-0 flex items-end justify-center pb-4 opacity-0 group-hover:opacity-100 transition-opacity">
-            <span className="bg-black/60 text-white text-sm px-4 py-2 rounded-full backdrop-blur-sm">
-              Click for details dashboard
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20">
+            <span className="bg-black/70 text-[#00d4ff] text-sm px-5 py-2.5 rounded-full backdrop-blur-sm border border-[#00d4ff]/30 font-medium">
+              Click to open dashboard
             </span>
           </div>
         </div>
 
-        {/* Quick stats bar */}
-        <div className="flex items-center justify-between px-5 py-3 bg-slate-900/60 text-sm">
-          <span className="text-green-400 font-semibold">👤 {stats.persons} persons</span>
-          <span className="text-blue-400 font-semibold">🚗 {stats.cars} cars</span>
-          <span className="text-gray-400">{time}</span>
+        {/* Stats bar */}
+        <div className="flex items-center justify-between px-5 py-3 border-t border-[#00d4ff]/10 text-sm font-mono"
+          style={{ background: "#010814" }}>
+          <span className="text-green-400 font-semibold flex items-center gap-1.5">
+            <span>👤</span> {stats.persons} persons
+          </span>
+          <span className="text-[#00d4ff] font-semibold flex items-center gap-1.5">
+            <span>🚗</span> {stats.cars} cars
+          </span>
+          <span className="text-gray-600">{time}</span>
         </div>
       </div>
 
-      {/* Dashboard modal */}
-      {showDashboard && (
-        <div className="fixed inset-0 z-[100000] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"
-          onClick={() => setShowDashboard(false)}>
-          <div className="relative bg-slate-800 rounded-2xl border border-slate-600 shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto"
-            onClick={e => e.stopPropagation()}>
+      {/* ── FULL DASHBOARD MODAL ── */}
+      {showDashboard && createPortal(
+        <div
+          className="fixed inset-0 z-[100000] flex items-center justify-center p-4 backdrop-blur-md"
+          style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(1,8,20,0.85)" }}
+          onClick={() => setShowDashboard(false)}
+        >
+          <div
+            className="relative w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-2xl border border-[#00d4ff]/20 shadow-2xl shadow-[#00d4ff]/10 font-mono mx-auto"
+            style={{ background: "linear-gradient(160deg, #041428 0%, #020B18 100%)" }}
+            onClick={e => e.stopPropagation()}
+          >
+            {/* Subtle top glow line */}
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00d4ff]/60 to-transparent" />
 
             {/* Header */}
-            <div className="flex items-center justify-between p-5 border-b border-slate-700">
-              <h3 className="text-xl font-bold text-white">Detection Dashboard</h3>
+            <div
+              className="flex items-center justify-between px-6 py-4 border-b border-[#00d4ff]/15 sticky top-0 z-10 backdrop-blur-sm"
+              style={{ background: "rgba(1,8,20,0.95)" }}
+            >
               <div className="flex items-center gap-3">
-                <a href={RTSP_RAW_URL} target="_blank" rel="noreferrer"
-                  className="text-xs text-cyan-400 border border-cyan-400/40 px-3 py-1 rounded-full hover:bg-cyan-400/10 transition">
-                  Open raw feed ↗
+                <div className="w-2 h-2 rounded-full bg-[#00d4ff] animate-pulse" />
+                <h2 className="text-white text-lg font-semibold tracking-wide">Detection Dashboard</h2>
+              </div>
+              <div className="flex items-center gap-3">
+                <a
+                  href={RTSP_RAW_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-1.5 text-xs text-[#00d4ff] border border-[#00d4ff]/30 px-3 py-1.5 rounded-full hover:bg-[#00d4ff]/10 transition"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#00d4ff] animate-pulse inline-block" />
+                  Open raw feed
                 </a>
-                <button onClick={() => setShowDashboard(false)}
-                  className="w-8 h-8 bg-slate-700 hover:bg-slate-600 rounded-full flex items-center justify-center text-white">✕</button>
+                <button
+                  onClick={() => setShowDashboard(false)}
+                  className="w-8 h-8 rounded-full flex items-center justify-center text-gray-400 hover:text-[#00d4ff] border border-[#00d4ff]/20 hover:border-[#00d4ff]/50 hover:bg-[#00d4ff]/10 transition"
+                >
+                  ✕
+                </button>
               </div>
             </div>
 
-            {/* Stats cards */}
-            <div className="grid grid-cols-3 gap-4 p-5">
-              {[
-                { label: "Persons now", value: stats.persons, color: "text-green-400", bg: "bg-green-400/10 border-green-400/30" },
-                { label: "Cars now", value: stats.cars, color: "text-blue-400", bg: "bg-blue-400/10 border-blue-400/30" },
-                { label: "Last update", value: time, color: "text-gray-300", bg: "bg-slate-700/50 border-slate-600" },
-              ].map((s, i) => (
-                <div key={i} className={`rounded-xl border p-4 text-center ${s.bg}`}>
-                  <div className={`text-2xl font-bold ${s.color}`}>{s.value}</div>
-                  <div className="text-xs text-gray-400 mt-1">{s.label}</div>
+            {/* Dashboard body */}
+            <div className="grid grid-cols-[200px_1fr]">
+
+              {/* LEFT — Stats sidebar */}
+              <div className="border-r border-[#00d4ff]/10 p-5 space-y-4" style={{ background: "rgba(1,8,20,0.6)" }}>
+
+                {/* Persons */}
+                <div className="rounded-xl p-4 border border-[#00d4ff]/15 relative overflow-hidden"
+                  style={{ background: "linear-gradient(135deg, #071E3D 0%, #041428 100%)" }}>
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00d4ff]/30 to-transparent" />
+                  <p className="text-[9px] uppercase tracking-widest text-[#00d4ff]/50 mb-2">Persons</p>
+                  <p className="text-5xl font-bold text-white mb-3">{stats.persons}</p>
+                  <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${
+                    stats.persons > 0
+                      ? "bg-yellow-400/10 text-yellow-300 border border-yellow-400/30"
+                      : "bg-green-400/10 text-green-400 border border-green-400/25"
+                  }`}>
+                    ● {stats.persons > 0 ? "Active" : "Clear"}
+                  </span>
                 </div>
-              ))}
-            </div>
 
-            {/* Detection list */}
-            <div className="px-5 pb-2">
-              <h4 className="text-sm font-semibold text-gray-300 mb-2">Current detections</h4>
-              {stats.detections.length === 0
-                ? <p className="text-gray-500 text-sm">No detections in this frame</p>
-                : (
-                  <div className="space-y-2 max-h-40 overflow-y-auto">
-                    {stats.detections.map((d, i) => (
-                      <div key={i} className="flex items-center justify-between bg-slate-700/50 rounded-lg px-3 py-2 text-sm">
-                        <span className={d.class === "person" ? "text-green-400" : "text-blue-400"}>
-                          {d.class} {d.track_id ? `#${d.track_id}` : ""}
-                        </span>
-                        <span className="text-gray-400">{(d.confidence * 100).toFixed(0)}% conf</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-            </div>
+                {/* Vehicles */}
+                <div className="rounded-xl p-4 border border-[#00d4ff]/15 relative overflow-hidden"
+                  style={{ background: "linear-gradient(135deg, #071E3D 0%, #041428 100%)" }}>
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00d4ff]/30 to-transparent" />
+                  <p className="text-[9px] uppercase tracking-widest text-[#00d4ff]/50 mb-2">Vehicles</p>
+                  <p className="text-5xl font-bold text-white mb-3">{stats.cars}</p>
+                  <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${
+                    stats.cars > 0
+                      ? "bg-[#00d4ff]/10 text-[#00d4ff] border border-[#00d4ff]/30"
+                      : "bg-green-400/10 text-green-400 border border-green-400/25"
+                  }`}>
+                    ● {stats.cars > 0 ? "Active" : "Clear"}
+                  </span>
+                </div>
 
-            {/* History feed */}
-            <div className="px-5 py-4">
-              <h4 className="text-sm font-semibold text-gray-300 mb-2">Recent activity (last 2 min)</h4>
-              <div className="space-y-1 max-h-48 overflow-y-auto">
-                {history.map((h, i) => (
-                  <div key={i} className="flex items-center gap-3 text-xs text-gray-400 py-1 border-b border-slate-700/50">
-                    <span className="text-gray-500 min-w-[70px]">{new Date(h.timestamp).toLocaleTimeString()}</span>
-                    <span className="text-green-400">👤 {h.persons}</span>
-                    <span className="text-blue-400">🚗 {h.cars}</span>
+                {/* Timestamp */}
+                <div className="rounded-xl p-4 border border-[#00d4ff]/15 relative overflow-hidden"
+                  style={{ background: "linear-gradient(135deg, #071E3D 0%, #041428 100%)" }}>
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00d4ff]/30 to-transparent" />
+                  <p className="text-[9px] uppercase tracking-widest text-[#00d4ff]/50 mb-2">Updated</p>
+                  <p className="text-xl font-bold text-white mb-2">{time}</p>
+                  <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-[#00d4ff]/10 text-[#00d4ff] border border-[#00d4ff]/25">
+                    ● Live
+                  </span>
+                </div>
+              </div>
+
+              {/* RIGHT — Video + tables */}
+              <div className="flex flex-col">
+
+                {/* Video */}
+                <div className="relative bg-black" style={{ aspectRatio: "16/9" }}>
+                  {/* Top cyan glow */}
+                  <div className="absolute top-0 left-0 right-0 h-px z-10 bg-gradient-to-r from-transparent via-[#00d4ff]/40 to-transparent" />
+                  <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 bg-black/70 border border-[#00d4ff]/20 text-white text-[10px] font-bold px-2.5 py-1 rounded-full backdrop-blur-sm">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping inline-block" />
+                    LIVE
                   </div>
-                ))}
-                {history.length === 0 && <p className="text-gray-500 text-xs">Waiting for data...</p>}
+                  <div className="absolute bottom-3 right-3 z-10 text-[10px] text-[#00d4ff]/60 bg-black/60 px-2 py-1 rounded backdrop-blur-sm border border-[#00d4ff]/10">
+                    30 FPS · 1080p
+                  </div>
+                  <video ref={modalVideoRef} autoPlay muted playsInline className="w-full h-full object-cover" />
+                </div>
+
+                {/* Detections table */}
+                <div className="border-t border-[#00d4ff]/10 p-5">
+                  <div className="flex items-center justify-between mb-3">
+                    <h4 className="text-sm font-semibold text-white tracking-wide">Detections</h4>
+                    <span className="text-xs text-[#00d4ff] bg-[#00d4ff]/10 border border-[#00d4ff]/25 px-2.5 py-0.5 rounded-full font-medium">
+                      {stats.detections.length} objects
+                    </span>
+                  </div>
+
+                  {stats.detections.length === 0 ? (
+                    <p className="text-gray-600 text-xs py-2">No detections in this frame</p>
+                  ) : (
+                    <div className="overflow-hidden rounded-lg border border-[#00d4ff]/15">
+                      <table className="w-full text-xs">
+                        <thead>
+                          <tr className="text-[#00d4ff]/50 uppercase tracking-widest text-[10px]"
+                            style={{ background: "rgba(1,8,20,0.8)" }}>
+                            <th className="text-left px-4 py-2.5 font-medium">ID</th>
+                            <th className="text-left px-4 py-2.5 font-medium">Class</th>
+                            <th className="text-left px-4 py-2.5 font-medium">Confidence</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {stats.detections.map((d, i) => {
+                            const conf = d.confidence * 100;
+                            const barColor = conf >= 80 ? "#22c55e" : conf >= 65 ? "#eab308" : "#ef4444";
+                            return (
+                              <tr key={i} className="border-t border-[#00d4ff]/8 hover:bg-[#00d4ff]/5 transition-colors">
+                                <td className="px-4 py-3 text-gray-600">{String(i + 1).padStart(2, "0")}</td>
+                                <td className="px-4 py-3">
+                                  <span className={`font-medium ${d.class === "person" ? "text-green-400" : "text-[#00d4ff]"}`}>
+                                    {d.class}{d.track_id ? ` #${d.track_id}` : ""}
+                                  </span>
+                                </td>
+                                <td className="px-4 py-3">
+                                  <div className="flex items-center gap-2">
+                                    <div className="flex-1 h-1.5 rounded-full overflow-hidden bg-[#00d4ff]/10" style={{ maxWidth: "120px" }}>
+                                      <div
+                                        className="h-full rounded-full transition-all duration-500"
+                                        style={{ width: `${conf}%`, backgroundColor: barColor }}
+                                      />
+                                    </div>
+                                    <span style={{ color: barColor }} className="font-semibold tabular-nums w-8 text-right">
+                                      {conf.toFixed(0)}%
+                                    </span>
+                                  </div>
+                                </td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
+                </div>
+
+                {/* Activity log */}
+                <div className="border-t border-[#00d4ff]/10 p-5">
+                  <div className="flex items-center justify-between mb-3">
+                    <h4 className="text-sm font-semibold text-white tracking-wide">Activity Log</h4>
+                    <span className="text-xs text-gray-600">last 2 min</span>
+                  </div>
+                  <div className="max-h-36 overflow-y-auto">
+                    {history.length === 0 ? (
+                      <p className="text-gray-700 text-xs py-2">Waiting for data...</p>
+                    ) : (
+                      history.map((h, i) => (
+                        <div key={i} className="flex items-center gap-4 text-xs py-2 border-b border-[#00d4ff]/8 last:border-0">
+                          <span className="text-gray-600 tabular-nums min-w-[70px]">
+                            {new Date(h.timestamp).toLocaleTimeString()}
+                          </span>
+                          <span className="text-green-400">👤 {h.persons}</span>
+                          <span className="text-[#00d4ff]">🚗 {h.cars}</span>
+                        </div>
+                      ))
+                    )}
+                  </div>
+                </div>
+
               </div>
             </div>
 
+            {/* Bottom glow line */}
+            <div className="h-px bg-gradient-to-r from-transparent via-[#00d4ff]/30 to-transparent" />
           </div>
         </div>
-      )}
+      , document.body)}
     </>
   );
 }

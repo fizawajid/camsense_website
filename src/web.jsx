@@ -645,7 +645,7 @@ const proudMoments = [
       </section>
 
       {/* Product Overview */}
-      <section id="product-overview" className="py-20 px-8 bg-gradient-to-b from-slate-800 to-slate-700 relative overflow-hidden">
+      <section id="product-overview" className="py-20 px-8 bg-gradient-to-b from-slate-800 to-slate-700 relative overflow-visible">
         <div className="absolute inset-0 pointer-events-none">
           <div className="scanning-grid"></div>
           <div className="floating-dots"></div>
