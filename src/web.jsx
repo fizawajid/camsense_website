@@ -94,7 +94,7 @@ const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
   //scroll for active section
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "pricing", "achievements","proud-moments", "goals", "team", "location", "contact"]
+      const sections = ["home", "achievements","proud-moments", "goals", "team", "location", "contact"]
       // const scrollPosition = window.scrollY + 100
       const scrollPosition = window.scrollY + window.innerHeight / 2
       for (const section of sections) {
@@ -309,7 +309,7 @@ const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
   const navItems = [
     { id: "home", label: "Home" },
     // { id: "modules", label: "Modules" },
-    { id: "pricing", label: "Pricing" },
+    // { id: "pricing", label: "Pricing" },
     { id: "achievements", label: "Achievements" },
     { id: "proud-moments", label: "Accomplishments" },
     { id: "goals", label: "Goals" },
@@ -884,8 +884,10 @@ const proudMoments = [
 </section> */}
 
 
+{/* pricing section new */}
+
 {/* Pricing Section - ADD THIS ENTIRE SECTION */}
-<section id="pricing" className="py-20 px-8 bg-gradient-to-b from-slate-600 to-slate-700 relative overflow-hidden">
+{/* <section id="pricing" className="py-20 px-8 bg-gradient-to-b from-slate-600 to-slate-700 relative overflow-hidden">
   <div className="absolute inset-0 pointer-events-none">
     <div className="circuit-pattern"></div>
     <div className="data-stream"></div>
@@ -926,20 +928,20 @@ const proudMoments = [
           }}
           onClick={() => handleFlyingClick(`pricing-${index}`)}
         >
-          {/* Card Shadow */}
+          
           <div className="absolute inset-0 bg-black/20 rounded-2xl blur-xl transform translate-y-4 group-hover:translate-y-6 transition-all duration-500"></div>
           
-          {/* Main Card */}
+          
           <div className={`relative h-full bg-white rounded-2xl border-2 ${plan.borderColor} overflow-hidden shadow-2xl group-hover:shadow-cyan-500/20 transition-all duration-500`}>
             
-            {/* Badge (if exists) */}
+            
             {plan.badge && (
               <div className="absolute top-4 right-4 bg-gradient-to-r from-pink-500 to-rose-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-pulse">
                 {plan.badge}
               </div>
             )}
 
-            {/* Header with gradient */}
+            
             <div className={`bg-gradient-to-br ${plan.color} p-6 text-white relative overflow-hidden`}>
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
               <div className="relative z-10">
@@ -951,15 +953,15 @@ const proudMoments = [
                 </div>
                 <p className="text-white/90 text-sm mt-1 font-medium">{plan.period}</p>
               </div>
-              {/* Decorative corner */}
+              
               <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-bl-full"></div>
             </div>
 
-            {/* Body */}
+           
             <div className="p-6 bg-white">
               <p className="text-gray-600 text-sm mb-6 h-10">{plan.description}</p>
               
-              {/* Features List */}
+              
               <ul className="space-y-3 mb-6">
                 {plan.features.map((feature, fIndex) => (
                   <li key={fIndex} className="flex items-start gap-2 text-gray-700">
@@ -973,7 +975,7 @@ const proudMoments = [
                 ))}
               </ul>
 
-              {/* Highlight Box (if exists) */}
+              
               {plan.highlight && (
                 <div className="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-lg p-4 mt-6">
                   <div className="flex items-center gap-2 mb-1">
@@ -985,11 +987,11 @@ const proudMoments = [
               )}
             </div>
 
-            {/* Hover Border Effect */}
+            
             <div className={`absolute inset-0 rounded-2xl ring-2 ring-inset ring-transparent group-hover:ring-cyan-400/30 transition-all duration-500 pointer-events-none`}></div>
           </div>
 
-          {/* Number Badge */}
+          
           <div className={`absolute -top-3 -left-3 w-8 h-8 bg-gradient-to-br ${plan.color} rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg z-10`}>
             {index + 1}
           </div>
@@ -997,14 +999,14 @@ const proudMoments = [
       ))}
     </div>
 
-    {/* Bottom Note */}
+    
     <div className="mt-12 text-center">
       <p className="text-gray-300 text-sm">
         💳 All prices in USD • Flexible payment options available • Enterprise plans available on request
       </p>
     </div>
   </div>
-</section>
+</section> */}
 
 
 
