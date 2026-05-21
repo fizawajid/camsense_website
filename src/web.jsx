@@ -18,6 +18,7 @@ import {
 import { desc } from "framer-motion/client";
 // import TestModelForm from './testmodel';
 import LiveDemoCard from './LiveDemoCard';
+import RequestQuotationForm from './RequestQuotationForm'
 
 
 const AISecurityWebsite = () => {
@@ -758,6 +759,9 @@ const proudMoments = [
     {/* //  <div className="mt-12 max-w-md mx-auto">
     //   <TestModelForm />
     // </div>  */}
+    <div className="mt-12 max-w-md mx-auto">
+    <RequestQuotationForm />
+    </div>
       </section>
 
 

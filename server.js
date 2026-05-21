@@ -64,6 +64,7 @@ dotenv.config();
 
 const app = express();
 app.use(cors());
+app.use(express.json());
 
 const upload = multer({ dest: "uploads/" });
 
@@ -111,5 +112,54 @@ app.post("/api/test-model", upload.single("video"), async (req, res) => {
 }
 
 });
+
+app.post("/api/request-quotation", async (req, res) => {
+  try {
+    const { name, email, company, phone, modules, cameraCount, message } = req.body;
+
+    if (!name || !email || !company) {
+      return res.status(400).json({ error: "Name, email, and company are required." });
+    }
+
+    // Only send to YOUR verified email — no auto-reply (onboarding@resend.dev restriction)
+    const { data, error } = await resend.emails.send({
+      from: "Camsense Website <onboarding@resend.dev>",
+      to: process.env.TO_EMAIL,   // fizawajid001@gmail.com
+      subject: `📋 New Quotation Request from ${company}`,
+      html: `
+        <div style="font-family: sans-serif; max-width: 600px; margin: auto; background: #0f172a; color: #e2e8f0; padding: 32px; border-radius: 12px;">
+          <h2 style="color: #22d3ee;">New Quotation Request</h2>
+          <p style="color: #94a3b8;">Submitted via camsense.org</p>
+          <hr style="border-color: #334155;" />
+          <table style="width: 100%; border-collapse: collapse;">
+            <tr><td style="padding: 8px 0; color: #94a3b8; width: 160px;">Full Name</td><td style="color: #f1f5f9; font-weight: 600;">${name}</td></tr>
+            <tr><td style="padding: 8px 0; color: #94a3b8;">Email</td><td><a href="mailto:${email}" style="color: #22d3ee;">${email}</a></td></tr>
+            <tr><td style="padding: 8px 0; color: #94a3b8;">Company</td><td style="color: #f1f5f9; font-weight: 600;">${company}</td></tr>
+            <tr><td style="padding: 8px 0; color: #94a3b8;">Phone</td><td style="color: #f1f5f9;">${phone || "Not provided"}</td></tr>
+            <tr><td style="padding: 8px 0; color: #94a3b8;">Modules</td><td style="color: #f1f5f9;">${modules || "Not specified"}</td></tr>
+            <tr><td style="padding: 8px 0; color: #94a3b8;">Cameras</td><td style="color: #f1f5f9;">${cameraCount || "Not specified"}</td></tr>
+          </table>
+          ${message ? `<hr style="border-color: #334155; margin: 24px 0;" /><p style="color: #94a3b8;">Message:</p><p style="color: #f1f5f9; background: #1e293b; padding: 16px; border-radius: 8px;">${message}</p>` : ""}
+          <hr style="border-color: #334155; margin: 24px 0;" />
+          <p style="color: #64748b; font-size: 12px;">Sent from camsense.org</p>
+        </div>
+      `,
+    });
+
+    // Resend returns { data, error } — check error explicitly
+    if (error) {
+      console.error("❌ Resend error:", error);
+      return res.status(500).json({ error: error.message });
+    }
+
+    console.log("✅ Quotation email sent:", data);
+    res.json({ success: true });
+
+  } catch (error) {
+    console.error("❌ Quotation route error:", error.message);
+    res.status(500).json({ error: error.message });
+  }
+});
+
 
 app.listen(5000, () => console.log("✅ Server running on port 5000"));
