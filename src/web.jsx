@@ -1684,6 +1684,13 @@ const proudMoments = [
   Old Chaklala Cantt, Rawalpindi, 46000`,
   color: "from-cyan-400 to-blue-500",
 },
+{
+  icon: MapPin,
+  title: "Europe Office",
+  desc: `• R. Caminho de Aveiro 8, Lavandeira,
+  3840-344 Aveiro, Portugal`,
+  color: "from-emerald-400 to-teal-500",
+},
 
                     {
                       icon: Target,
