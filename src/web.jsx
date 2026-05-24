@@ -1781,16 +1781,19 @@ const proudMoments = [
                 color: "from-green-400 to-emerald-500",
               },
               {
-                icon: MapPin,
-                title: "Visit Us",
-                primary: "NICAT",
-                secondary: "J442+J68, Old Airport Rd, Old Chaklala Cantt., Rawalpindi, 46000",
-                color: "from-purple-400 to-pink-500",
-              },
+              icon: MapPin,
+              title: "Visit Us",
+              primary: "NICAT",
+              secondary: `J442+J68, Old Airport Rd, Old Chaklala Cantt., Rawalpindi, 46000
+
+             - R. Caminho de Aveiro 8, Lavandeira, 3840-344 Aveiro, Portugal`,
+              color: "from-purple-400 to-pink-500",
+            },
+
             ].map((contact, index) => (
               <div
                 key={index}
-                className={`group bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-8 border border-slate-600 hover:border-cyan-400/50 transition-all duration-300 shadow-lg hover:shadow-2xl ${
+                className={`group bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-8 border border-slate-600 hover:border-cyan-400/50 transition-all duration-300 shadow-lg hover:shadow-2xl flex flex-col justify-center ${
                   visibleElements.has(`contact-${index}`) ? "animate-flyInFromBottom" : "opacity-0"
                 } ${clickedElement === `contact-${index}` ? "animate-flyTowards" : "hover:scale-105"}`}
                 data-animate-id={`contact-${index}`}
@@ -1807,7 +1810,7 @@ const proudMoments = [
                     {contact.title}
                   </h3>
                   <p className="text-gray-200 text-lg mb-2">{contact.primary}</p>
-                  <p className="text-gray-400">{contact.secondary}</p>
+                  <p className="text-gray-400 whitespace-pre-line">{contact.secondary}</p>
                 </div>
               </div>
             ))}
